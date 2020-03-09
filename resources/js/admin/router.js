@@ -10,6 +10,7 @@ const UsersUpdate = () => import('./views/Users/Update');
 
 //Intro
 const IntroView = () => import('./views/Intro/View');
+const IntroCreate = () => import('./views/Intro/Create');
 
 const router = new VueRouter({
     mode: 'history',
@@ -23,6 +24,7 @@ const router = new VueRouter({
 
         // Intro
         { path: '/intro', name: 'intro.index', component: IntroView },
+        { path: '/intro/create', name: 'intro.create', component: IntroCreate },
     ]
 });
 

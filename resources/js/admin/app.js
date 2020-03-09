@@ -11,12 +11,15 @@ import router from './router';
 import VueRouter from 'vue-router'
 import App from './views/App';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import tinymce from '@tinymce/tinymce-vue'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(VueRouter)
+// Vue.use(tinymce)
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -35,6 +38,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('pricing-component', require('./components/Pricing.vue'));
 Vue.component('sidebar-component', require('./components/SideBar.vue'));
 Vue.component('navbar-component', require('./components/NavBar.vue'));
+Vue.component('tinymce-component', require('@tinymce/tinymce-vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
