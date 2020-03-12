@@ -25,7 +25,7 @@
                             <br>
                             <button type="button" v-if="!hasIntro" class="btn btn-primary btn-sm" @click.prevent.default="addIntro">Add Intro</button>
                             <button type="button" v-if="hasIntro" class="btn btn-primary btn-sm" @click.prevent.default="editIntro">Edit Intro</button>
-                            <button type="button" v-if="hasIntro" class="btn btn-danger btn-sm" @click.prevent.default="openDeleteIntroModal">Delete Mayor</button>
+                            <button type="button" v-if="hasIntro" class="btn btn-danger btn-sm" @click.prevent.default="openDeleteIntroModal">Delete Intro</button>
                         </div>
                         <div v-else>
                             <div class="progress">
@@ -40,13 +40,13 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">You're about to delete this Mayor?</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">You're about to delete this Intro?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete this Mayor?
+                                Are you sure you want to delete this Intro?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="deleteIntro">Confirm Delete</button>
@@ -79,7 +79,7 @@
         },
         methods: {
             addIntro() {
-                // this.$router.push({ name: 'mayors.create' });
+                this.$router.push({ name: 'intro.create' });
             },
             editIntro() {
                 // this.$router.push({
@@ -93,7 +93,7 @@
             deleteIntro() {
                 $('#deleteIntroModal').modal('hide');
                 axios.delete('/api/intro/' + this.intro.id).then(res => {
-                    // this.$router.push({ name: 'mayors.view' });
+                    this.$router.go()
                 }).catch(err => {
                     console.log(err);
                 });
