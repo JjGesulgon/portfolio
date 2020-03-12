@@ -11,6 +11,7 @@ const UsersUpdate = () => import('./views/Users/Update');
 //Intro
 const IntroView = () => import('./views/Intro/View');
 const IntroCreate = () => import('./views/Intro/Create');
+const IntroEdit = () => import('./views/Intro/Edit');
 
 const router = new VueRouter({
     mode: 'history',
@@ -25,6 +26,7 @@ const router = new VueRouter({
         // Intro
         { path: '/intro', name: 'intro.index', component: IntroView },
         { path: '/intro/create', name: 'intro.create', component: IntroCreate },
+        { path: '/intro/edit', name: 'intro.edit', component: IntroEdit },
     ]
 });
 

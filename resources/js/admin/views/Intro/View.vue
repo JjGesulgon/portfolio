@@ -14,7 +14,7 @@
                             <p class="text-center" v-if="!hasIntro"> No Intro Yet</p>
                             <div class="row">
                                 <div v-if="intro.image" class="offset-md-3 col-md-6">
-                                    <img class="img-fluid" :src="'/storage/images/' + intro.image">
+                                    <img class="img-fluid img-thumbnail" :src="'/storage/images/' + intro.image">
                                 </div>
                             </div>
                             <h1 class="text-center">{{ intro.name }}</h1>
@@ -82,10 +82,10 @@
                 this.$router.push({ name: 'intro.create' });
             },
             editIntro() {
-                // this.$router.push({
-                //     name: 'mayors.edit',
-                //     params: { id: this.mayor.id }
-                // });
+                this.$router.push({
+                    name: 'intro.edit',
+                    // params: { id: this.mayor.id }
+                });
             },
             openDeleteIntroModal() {
                 $('#deleteIntroModal').modal('show');
