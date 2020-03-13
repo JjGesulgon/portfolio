@@ -7,9 +7,9 @@ use App\Intro;
 class IntroRepository extends Repository
 {
     /**
-     * Create new instance of iintro repository.
+     * Create new instance of intro repository.
      *
-     * @param Mayor Intro intro model
+     * @param Intro Intro intro model
      */
     public function __construct(Intro $intro)
     {

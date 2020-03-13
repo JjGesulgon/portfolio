@@ -61,4 +61,24 @@ class User extends Authenticatable
             $model->password = bcrypt($model->password);
         });
     }
+
+    /**
+     * The user has one intro
+     *
+     * @return array object
+     */
+    public function intro()
+    {
+        return $this->hasOne(Intro::class);
+    }
+
+     /**
+     * The user has one about
+     *
+     * @return array object
+     */
+    public function about()
+    {
+        return $this->hasOne(About::class);
+    }
 }
