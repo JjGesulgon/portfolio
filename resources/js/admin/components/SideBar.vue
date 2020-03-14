@@ -13,6 +13,9 @@
                     <li>
                         <router-link to="/intro"><i class="fas fa-address-card"></i>Intro</router-link>
                     </li>
+                    <li>
+                        <router-link to="/about"><i class="fas fa-address-book"></i>About</router-link>
+                    </li>
                 </ul> 
             </div>  
         </div>   

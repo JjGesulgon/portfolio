@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.po
     ]);
 
     Route::resources([
-        'intro'           => 'IntroController'
+        'intro'           => 'IntroController',
+        'about'           => 'AboutController'
     ]);
 });

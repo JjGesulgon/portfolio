@@ -34,7 +34,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        if (! $intro = $this->about->getAbout()) {
+        if (! $about = $this->about->getAbout()) {
             return response()->json([
                 'message' => 'Resource does not exist'
             ], 400);

@@ -52,7 +52,7 @@ class Intro extends Model
     }
 
      /**
-     * The article belongs to a user.
+     * The intro belongs to a user.
      *
      * @return object
      */

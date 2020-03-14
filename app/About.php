@@ -6,12 +6,12 @@ use App\Traits\Filtering;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Intro extends Model
+class About extends Model
 {
     use SoftDeletes, Filtering;
 
      /**
-     * Intro table.
+     * About table.
      *
      * @var string
      */
@@ -51,7 +51,7 @@ class Intro extends Model
     }
 
      /**
-     * The article belongs to a user.
+     * The about belongs to a user.
      *
      * @return object
      */
