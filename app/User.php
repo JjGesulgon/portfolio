@@ -72,7 +72,7 @@ class User extends Authenticatable
         return $this->hasOne(Intro::class);
     }
 
-     /**
+    /**
      * The user has one about
      *
      * @return array object
@@ -80,5 +80,15 @@ class User extends Authenticatable
     public function about()
     {
         return $this->hasOne(About::class);
+    }
+
+    /**
+     * The user has many experience
+     *
+     * @return array object
+     */
+    public function experience()
+    {
+        return $this->hasMany(Experience::class);
     }
 }
