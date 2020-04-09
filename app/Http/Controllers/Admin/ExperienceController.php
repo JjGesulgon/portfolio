@@ -36,6 +36,7 @@ class ExperienceController extends Controller
     public function index()
     {
         if (! $data = ExperienceResource::collection($this->experience->paginateWithFilters(request(), request()->per_page, request()->order_by))) {
+            // if (! $data = ExperienceResource::collection($this->experience->all())) {
             return response()->json([
                 'message'  => 'Failed to retrieve resource'
             ], 400);

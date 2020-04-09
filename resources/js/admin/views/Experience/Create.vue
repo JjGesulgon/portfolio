@@ -96,7 +96,7 @@
 
             viewExperience() {
                 this.$router.push({
-                    name: 'users.index'
+                    name: 'experience.index'
                 });
             },
         }
