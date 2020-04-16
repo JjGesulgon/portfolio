@@ -10,45 +10,41 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New Experience
+                        View Experience
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
-                            <form v-on:submit.prevent="createNewExperience">
+                            <fieldset disabled>
                                 <div class="form-group">
-                                    <label>Role</label>
-                                    <input id="role" type="text" class="form-control" v-model="role" autocomplete="off" minlength="2" maxlength="255" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" class="form-control" v-model="company_name" autocomplete="off" minlength="2" maxlength="255" required>
+                                    <label for="role">Role</label>
+                                    <input type="text" class="form-control" v-model="experience.role">
                                 </div>
                                 <div class="form-group">
-                                    <label>Employment Type</label>
-                                    <input type="text" class="form-control" v-model="employment_type" autocomplete="off" minlength="2" maxlength="255" required>
+                                    <label for="company_name">Company Name</label>
+                                    <input type="text" class="form-control" v-model="experience.company_name">
                                 </div>
                                 <div class="form-group">
-                                    <label>Location</label>
-                                    <input type="text" class="form-control" v-model="location" autocomplete="off" minlength="2" maxlength="255" required>
+                                    <label for="employment_type">Employment Type</label>
+                                    <input type="text" class="form-control" v-model="experience.employment_type">
                                 </div>
                                 <div class="form-group">
-                                    <label>Start Date</label>
-                                    <input type="date" class="form-control" v-model="start_date" autocomplete="off" required>
+                                    <label for="location">Location</label>
+                                    <input type="text" class="form-control" v-model="experience.location">
                                 </div>
                                 <div class="form-group">
-                                    <label>End Date</label>
-                                    <input type="date" class="form-control" v-model="end_date" autocomplete="off">
+                                    <label for="location">Location</label>
+                                    <input type="text" class="form-control" v-model="experience.location">
                                 </div>
-                                <div v-if="errors != []">
-                                    <div class="alert alert-danger" v-for="error in errors">
-                                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                        <strong>Error!</strong> {{ error[0] }}
-                                    </div>
+                                <div class="form-group">
+                                    <label for="start_date">Start Date</label>
+                                    <input type="date" class="form-control" v-model="experience.start_date">
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create New Experience</button>
-                            </form>
+                                <div class="form-group">
+                                    <label for="end_date">End Date</label>
+                                    <input type="date" class="form-control" v-model="experience.end_date">
+                                </div>
+                            </fieldset>
                         </div>
-
                         <div v-else>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
@@ -64,36 +60,25 @@
     export default {
         data() {
             return {
-                ifReady: true,
-                role: '',
-                company_name: '',
-                employment_type: '',
-                location: '',
-                start_date: '',
-                end_date: '',
-                errors: []
+                ifReady: false,
+                experience: ''
             };
         },
 
         mounted() {
-                var date = new Date();
-                this.start_date = date;
+            let promise = new Promise((resolve, reject) => {
+                axios.get('/api/experience/' + this.$route.params.id).then(res => {
+                    this.experience = res.data.experience;
+                    resolve();
+                });
+            });
+
+            promise.then(() => {
+                this.ifReady = true;
+            });
         },
 
         methods: {
-            createNewExperience() {
-                this.ifReady = false;
-                this.errors = [];
-
-                axios.post('/api/experience', this.$data).then(res => {
-                     this.$router.push({ name: 'experience.index' });
-                }).catch(err => {
-                    this.errors = err.response.data.errors
-                    this.ifReady = true;
-                    console.log(err.response);
-                });
-            },
-
             viewExperience() {
                 this.$router.push({
                     name: 'experience.index'

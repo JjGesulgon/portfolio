@@ -22,7 +22,7 @@ class CreateExperienceTable extends Migration
             $table->string('employment_type');
             $table->string('location');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -275,14 +275,14 @@
         methods: {
             viewExperiences(experienceId) {
                 this.$router.push({
-                        name: 'experiences.view', 
+                        name: 'experience.view', 
                         params: { id: experienceId } 
                     })
             },
 
             updateExperiences(experienceId) {
                 this.$router.push({
-                        name: 'experiences.update', 
+                        name: 'experience.update', 
                         params: { id: experienceId } 
                     })
             },

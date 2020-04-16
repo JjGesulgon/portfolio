@@ -59,7 +59,7 @@ class ExperienceController extends Controller
             'employment_type'   => 'required|string|max:255',
             'location'          => 'required|string|max:255',
             'start_date'        => 'required|date',
-            'end_date'          => 'required|date',
+            'end_date'          => 'date',
         ]);
 
         if ($validator->fails()) {
