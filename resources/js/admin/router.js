@@ -22,7 +22,7 @@ const AboutEdit = () => import('./views/About/Edit');
 const Experience = () => import('./views/Experience/Index');
 const ExperienceView = () => import('./views/Experience/View');
 const ExperienceCreate = () => import('./views/Experience/Create');
-//const AboutEdit = () => import('./views/About/Edit');
+const ExperienceUpdate = () => import('./views/Experience/Update');
 
 const router = new VueRouter({
     mode: 'history',
@@ -48,7 +48,7 @@ const router = new VueRouter({
          { path: '/experience', name: 'experience.index', component: Experience },
          { path: '/eperience/:id', name: 'experience.view', component: ExperienceView },
          { path: '/experience/create', name: 'experience.create', component: ExperienceCreate },
-        //  { path: '/about/edit', name: 'about.edit', component: AboutEdit },
+         { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
     ]
 });
 

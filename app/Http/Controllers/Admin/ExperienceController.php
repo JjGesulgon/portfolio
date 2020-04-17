@@ -102,7 +102,12 @@ class ExperienceController extends Controller
     {
         // return $request->all();
         $validator = Validator::make($request->all(), [
-            'name'  => 'required|string|max:255',
+            'role'              => 'required|string|max:255',
+            'company_name'      => 'required|string|max:255',
+            'employment_type'   => 'required|string|max:255',
+            'location'          => 'required|string|max:255',
+            'start_date'        => 'required|date',
+            'end_date'          => 'date',
         ]);
 
         if ($validator->fails()) {
