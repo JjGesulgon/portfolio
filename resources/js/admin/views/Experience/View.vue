@@ -39,7 +39,9 @@
                                     <label for="start_date">Start Date</label>
                                     <input type="date" class="form-control" v-model="experience.start_date">
                                 </div>
-                                <div class="form-group">
+                                <input type="checkbox" id="isCurrent" v-model="isCurrent">
+                                <label for="isCurrent">Current Job</label>
+                                <div class="form-group" v-if="!isCurrent">
                                     <label for="end_date">End Date</label>
                                     <input type="date" class="form-control" v-model="experience.end_date">
                                 </div>
@@ -61,7 +63,8 @@
         data() {
             return {
                 ifReady: false,
-                experience: ''
+                experience: '',
+                isCurrent: '',
             };
         },
 
@@ -69,6 +72,9 @@
             let promise = new Promise((resolve, reject) => {
                 axios.get('/api/experience/' + this.$route.params.id).then(res => {
                     this.experience = res.data.experience;
+                    if (this.experience.end_date == null){
+                        this.isCurrent = true
+                    }
                     resolve();
                 });
             });

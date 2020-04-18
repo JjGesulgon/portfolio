@@ -35,7 +35,9 @@
                                     <label>Start Date</label>
                                     <input type="date" class="form-control" v-model="start_date">
                                 </div>
-                                <div class="form-group">
+                                <input type="checkbox" id="isCurrent" v-model="isCurrent">
+                                <label for="isCurrent">Current Job</label>
+                                <div class="form-group"  v-if="!isCurrent">
                                     <label>End Date</label>
                                     <input type="date" class="form-control" v-model="end_date">
                                 </div>
@@ -71,6 +73,7 @@
                 location: '',
                 start_date: '',
                 end_date: '',
+                isCurrent: '',
                 errors: []
             };
         },
@@ -86,6 +89,10 @@
                     this.location = res.data.experience.location;
                     this.start_date = res.data.experience.start_date;
                     this.end_date = res.data.experience.end_date;
+
+                    if (this.end_date == null){
+                        this.isCurrent = true
+                    }
                     resolve();
                 });
             });
@@ -102,7 +109,6 @@
                 });
             },
             updateExperience() {
-                this.ifReady = false;
                 this.errors = [];
                 let formData = new FormData();
                 formData.append('_method','PATCH');
@@ -111,8 +117,13 @@
                 formData.append('employment_type', this.employment_type);
                 formData.append('location', this.location);
                 formData.append('start_date', this.start_date);
-                formData.append('end_date', this.end_date);
-
+                if(!this.isCurrent){
+                    formData.append('end_date', this.end_date);
+                    if (this.end_date == null){
+                        alert("Error: End date can't be null")
+                        return
+                    }
+                }
                 axios.post('/api/experience/' + this.$route.params.id, formData).then(res => {
                     this.$router.push({
                         name: 'experience.index'
@@ -122,7 +133,7 @@
                         this.ifReady = true;
                         console.log(err);
                     });
-            }
+            },
         }
     }
 </script>

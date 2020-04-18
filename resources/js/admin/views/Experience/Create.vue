@@ -35,7 +35,9 @@
                                     <label>Start Date</label>
                                     <input type="date" class="form-control" v-model="start_date" autocomplete="off" required>
                                 </div>
-                                <div class="form-group">
+                                <input type="checkbox" id="isCurrent" v-model="isCurrent">
+                                <label for="isCurrent">Current Job</label>
+                                <div class="form-group" v-if="!isCurrent">
                                     <label>End Date</label>
                                     <input type="date" class="form-control" v-model="end_date" autocomplete="off">
                                 </div>
@@ -71,6 +73,7 @@
                 location: '',
                 start_date: '',
                 end_date: '',
+                isCurrent: true,
                 errors: []
             };
         },
