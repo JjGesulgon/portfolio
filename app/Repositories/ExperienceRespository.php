@@ -17,7 +17,7 @@ class ExperienceRepository extends Repository
         $this->experience = $experience;
     }
      /**
-     * Get the about
+     * Get the experience
      *
      * @return array json object
      */
