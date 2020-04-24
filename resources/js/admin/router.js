@@ -24,6 +24,12 @@ const ExperienceView = () => import('./views/Experience/View');
 const ExperienceCreate = () => import('./views/Experience/Create');
 const ExperienceUpdate = () => import('./views/Experience/Update');
 
+//Skill
+const Skills = () => import('./views/Skills/Index');
+// const ExperienceView = () => import('./views/Experience/View');
+const SkillCreate = () => import('./views/Skills/Create');
+// const ExperienceUpdate = () => import('./views/Experience/Update');
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -45,10 +51,16 @@ const router = new VueRouter({
         { path: '/about/edit', name: 'about.edit', component: AboutEdit },
 
          // Experience
-         { path: '/experience', name: 'experience.index', component: Experience },
-         { path: '/eperience/:id', name: 'experience.view', component: ExperienceView },
-         { path: '/experience/create', name: 'experience.create', component: ExperienceCreate },
-         { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
+        { path: '/experience', name: 'experience.index', component: Experience },
+        { path: '/eperience/:id', name: 'experience.view', component: ExperienceView },
+        { path: '/experience/create', name: 'experience.create', component: ExperienceCreate },
+        { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
+
+          // Skill
+        { path: '/skills', name: 'skills.index', component: Skills },
+        //   { path: '/eperience/:id', name: 'experience.view', component: ExperienceView },
+        { path: '/skills/create', name: 'skills.create', component: SkillCreate },
+        //   { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
     ]
 });
 

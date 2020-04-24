@@ -15,7 +15,7 @@ class Skill extends Model
      *
      * @var string
      */
-    protected $table = 'skill';
+    protected $table = 'skills';
 
     /**
      * The attributes that are mass assignable.

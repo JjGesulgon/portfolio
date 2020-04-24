@@ -14,10 +14,13 @@
                         <router-link to="/intro"><i class="fas fa-address-card"></i>Intro</router-link>
                     </li>
                     <li>
-                        <router-link to="/about"><i class="fas fa-address-book"></i>About</router-link>
+                        <router-link to="/about"><i class="fas fa-skull"></i>About</router-link>
                     </li>
                     <li>
-                        <router-link to="/experience"><i class="fas fa-address-book"></i>Experiences</router-link>
+                        <router-link to="/experience"><i class="fas fa-briefcase"></i>Experiences</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/skills"><i class="fas fa-dice-six"></i>Skills</router-link>
                     </li>
                 </ul> 
             </div>  

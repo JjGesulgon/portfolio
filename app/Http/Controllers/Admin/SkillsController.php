@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SkillsResource;
-use App\Repositories\SkillsRepository;
+use App\Http\Resources\SkillResource;
+use App\Repositories\SkillRepository;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

@@ -2,11 +2,11 @@
     <div class="main_content">
         <div class="info">
             <div class="mr-auto mt-5 lettering">
-                Experience
+                Skills
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createExperience"><i class="fas fa-user"></i>Create Experience</button>
+                    <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createSkill"><i class="fas fa-user"></i>Create Skills</button>
                     <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
                 </div>
                 <div class="card">
@@ -18,7 +18,7 @@
                             <caption>
                                 <div class="row">
                                     <div class="col-md-9">
-                                        List of Experiences - Total Items {{ this.meta.total }}
+                                        List of Skills - Total Items {{ this.meta.total }}
                                     </div>
                                     <div class="col-md-3">
                                         <div class="progress" height="30px;" v-if="showProgress">
@@ -29,28 +29,18 @@
                             </caption>
                             <thead>
                                 <tr>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Company Name</th>
-                                    <th scope="col">Employment Type</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Start Date</th>
-                                    <th scope="col">End Date</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Options</th>
                                 </tr>
                             </thead>
-                            <tbody v-if="experiences">
-                                <tr v-for="{ id, role, company_name, employment_type, location, start_date, end_date } in experiences">
-                                    <td>{{ role }}</td>
-                                    <td>{{ company_name }}</td>
-                                    <td>{{ employment_type }}</td>
-                                    <td>{{ location }}</td>
-                                    <td>{{ start_date }}</td>
-                                    <td>{{ end_date }}</td>
+                            <tbody v-if="skills">
+                                <tr v-for="{ id, name } in skills">
+                                    <td>{{ name }}</td>
                                     <td>
                                         <!-- <router-link class="text-info" :to="{ name: 'admins.view', params: { id: id }}">View</router-link> -->
-                                        <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewExperiences(id)">View</button>
-                                        <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateExperiences(id)">Edit</button>
-                                        <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteExperienceModal(id)">Delete</button>
+                                        <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewSkill(id)">View</button>
+                                        <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateSkill(id)">Edit</button>
+                                        <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteSkillModal(id)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -58,20 +48,20 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="deleteExperienceModal" tabindex="-1" role="dialog" aria-labelledby="deleteExperienceTitle" aria-hidden="true">
+                <div class="modal fade" id="deleteSkillModal" tabindex="-1" role="dialog" aria-labelledby="deleteSkillTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">You're about to delete this Experience</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">You're about to delete this Skill</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete this Experience?
+                                Are you sure you want to delete this Skill?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="deleteExperience">Confirm Delete</button>
+                                <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="deleteSkill">Confirm Delete</button>
                                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -142,19 +132,15 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Search Experiences</h5>
+                                    <h5 class="modal-title">Search Skill</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Role</label>
-                                        <input type="text" class="form-control" v-model="searchColumnRole" autocomplete="off" minlength="2" maxlength="255" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Company Name</label>
-                                        <input type="email" class="form-control" v-model="searchColumnCompanyName" autocomplete="off" minlength="2" maxlength="255" required>
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" v-model="searchColumnName" autocomplete="off" minlength="2" maxlength="255" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Order By</label>
@@ -178,10 +164,10 @@
     </div>
 </template>
 <script>
-    const getExperience = (page, per_page, searchColumnRole, searchColumnCompanyName, order_by, callback) => {
-        const params = { page, per_page, searchColumnRole, searchColumnCompanyName, order_by };
+    const getSkills = (page, per_page, searchColumnName, order_by, callback) => {
+        const params = { page, per_page, searchColumnName, order_by };
 
-        axios.get('/api/experience', { params }).then(res => {
+        axios.get('/api/skills', { params }).then(res => {
             callback(null, res.data);
         }).catch(error => {
             if (error.response.status == 401) {
@@ -196,10 +182,9 @@
     export default {
         data() {
             return {
-                experiences: null,
-                experienceID: null,
-                searchColumnRole: '',
-                searchColumnCompanyName: '',
+                skills: null,
+                skillID: null,
+                searchColumnName: '',
                 order_by: 'desc',
                 meta: {
                     current_page: null,
@@ -224,18 +209,18 @@
 
         beforeRouteEnter (to, from, next) {
             if (to.query.per_page == null) {
-                getExperience(to.query.page, 15, to.query.searchColumnRole, to.query.searchColumnCompanyName, to.query.order_by, (err, data) => {
+                getSkills(to.query.page, 15, to.query.searchColumnName, to.query.order_by, (err, data) => {
                     next(vm => vm.setData(err, data));
                 });
             } else {
-                getExperience(to.query.page, to.query.per_page, to.query.searchColumnRole, to.query.searchColumnCompanyName, to.query.order_by, (err, data) => {
+                getSkills(to.query.page, to.query.per_page, to.query.searchColumnName, to.query.order_by, (err, data) => {
                     next(vm => vm.setData(err, data));
                 });
             }
         },
 
         beforeRouteUpdate (to, from, next) {
-            getExperience(to.query.page, this.meta.per_page, to.query.searchColumnRole, to.query.searchColumnCompanyName, to.query.order_by, (err, data) => {
+            getSkills(to.query.page, this.meta.per_page, to.query.searchColumnName, to.query.order_by, (err, data) => {
                 this.setData(err, data);
                 next();
             });
@@ -273,34 +258,34 @@
         },
 
         methods: {
-            viewExperiences(experienceId) {
+            viewSkill(skillID) {
                 this.$router.push({
-                        name: 'experience.view', 
-                        params: { id: experienceId } 
+                        name: 'skill.view', 
+                        params: { id: skillId } 
                     })
             },
 
-            updateExperiences(experienceId) {
+            updateSkill(skillID) {
                 this.$router.push({
-                        name: 'experience.update', 
-                        params: { id: experienceId } 
+                        name: 'skill.update', 
+                        params: { id: skillID } 
                     })
             },
 
-            createExperience() {
+            createSkill() {
                 this.$router.push({
-                    name: 'experience.create'
+                    name: 'skills.create'
                 });
             },
 
-            openDeleteExperienceModal(id) {
-                $('#deleteExperienceModal').modal('show');
-                this.experienceID = id
+            openDeleteSkillModal(id) {
+                $('#deleteSkillModal').modal('show');
+                this.skillID = id
             },
             
-            deleteExperience() {
-                $('#deleteExperienceModal').modal('hide');
-                axios.delete('/api/experience/' + this.experienceID).then(res => {
+            deleteSkill() {
+                $('#deleteSkillModal').modal('hide');
+                axios.delete('/api/skills/' + this.skillID).then(res => {
                     this.$router.go()
                 }).catch(err => {
                     console.log(err);
@@ -311,12 +296,11 @@
             goToFirstPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page: 1,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
@@ -325,12 +309,11 @@
             goToPage(page = null) {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
@@ -339,12 +322,11 @@
             goToLastPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page: this.meta.last_page,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
@@ -353,12 +335,11 @@
             goToNextPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page: this.nextPage,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
@@ -367,24 +348,23 @@
             goToPreviousPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page: this.prevPage,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
             },
 
-            setData(err, { data: experiences, links, meta }) {
+            setData(err, { data: skills, links, meta }) {
                 this.pageNumbers = [];
 
                 if (err) {
                     this.error = err.toString();
                 } else {
-                    this.experiences = experiences;
+                    this.skills = skills;
                     this.links = links;
                     this.meta = meta;
                 }
@@ -443,12 +423,11 @@
             changePerPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page: 1,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
@@ -458,20 +437,18 @@
                 $('#searchModal').modal('hide');
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'experience.index',
+                    name: 'skills.index',
                     query: {
                         page: 1,
                         per_page: this.meta.per_page,
-                        searchColumnRole: this.searchColumnRole,
-                        searchColumnCompanyName: this.searchColumnCompanyName,
+                        searchColumnName: this.searchColumnName,
                         order_by: this.order_by
                     }
                 });
             },
 
             clear() {
-                this.searchColumnRole = '';
-                this.searchColumnCompanyName = '';
+                this.searchColumnName = '';
                 this.order_by = 'desc';
             },
 

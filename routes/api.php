@@ -34,5 +34,6 @@ Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.po
         'intro'           => 'IntroController',
         'about'           => 'AboutController',
         'experience'      => 'ExperienceController',
+        'skills'          => 'SkillsController',
     ]);
 });
