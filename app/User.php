@@ -91,4 +91,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Experience::class);
     }
+
+    /**
+     * The user has many skill
+     *
+     * @return array object
+     */
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
+    /**
+     * The user has many projects
+     *
+     * @return array object
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

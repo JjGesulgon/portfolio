@@ -22,8 +22,8 @@ class CreateProjectsTable extends Migration
             $table->string('role');
             $table->string('live_link')->nullable();
             $table->string('github_link')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            // $table->date('start_date')->nullable();
+            // $table->date('end_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
