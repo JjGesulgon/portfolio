@@ -19,7 +19,9 @@ class CreateProjectsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->longText('description');
-            $table->string('link')->nullable();
+            $table->string('role');
+            $table->string('live_link')->nullable();
+            $table->string('github_link')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->timestamps();
