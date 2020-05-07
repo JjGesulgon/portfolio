@@ -1,0 +1,161 @@
+<template>
+    <div class="main_content">
+        <div class="info">
+            <div class="mr-auto mt-5 lettering">
+                Projects
+            </div>
+            <div>
+                <div class="d-flex flex-row-reverse">
+                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewProjects">Back</button>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Create New Project
+                    </div>
+                    <div class="card-body">
+                        <div v-if="ifReady">
+                            <form v-on:submit.prevent="createNewProject">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <!-- <textarea class="form-control" v-model="body" id="body" rows="20"></textarea> -->
+                                    <tinymce-component
+                                        v-model="description"
+                                        api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
+                                        :init="{
+                                            height: 500,
+                                            menubar: false,
+                                            plugins: [
+                                            'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+                                            ],
+                                            menubar: 'file edit view insert format tools table help',
+                                            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+                                            toolbar_sticky: true,
+                                        }"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>Role</label>
+                                    <input id="role" type="text" class="form-control" v-model="role" autocomplete="off" minlength="2" maxlength="255" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Live Demo Link</label>
+                                    <input id="live_link" type="text" class="form-control" v-model="live_link" autocomplete="off" minlength="2" maxlength="255" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Github Link</label>
+                                    <input id="github_link" type="text" class="form-control" v-model="github_link" autocomplete="off" minlength="2" maxlength="255" required>
+                                </div>
+                                <div v-if="errors != []">
+                                    <div class="alert alert-danger" v-for="error in errors">
+                                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                        <strong>Error!</strong> {{ error[0] }}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Create New Project</button>
+                            </form>
+                        </div>
+
+                        <div v-else>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                ifReady: true,
+                name: '',
+                description: '',
+                role: '',
+                live_link: '',
+                github_link: '',
+                errors: []
+            };
+        },
+
+        methods: {
+            createNewProject() {
+                this.ifReady = false;
+                this.errors = [];
+
+                axios.post('/api/projects', this.$data).then(res => {
+                     //this.$router.push({ name: 'projects.index' });
+                }).catch(err => {
+                    this.errors = err.response.data.errors
+                    this.ifReady = true;
+                    console.log(err.response);
+                });
+            },
+
+            viewProjects() {
+                this.$router.push({
+                    name: 'projects.index'
+                });
+            },
+        }
+    }
+</script>
+<style scoped>
+    .display-flex{
+         display: flex;
+    }
+
+    .navi-item{
+        margin-right: 210px !important;
+    }
+
+    .lettering{
+        font-size: 45px;
+    }
+    .header{
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        background: #fff;
+        color: #717171;
+        border-bottom: 1px solid #e0e4e8;
+    }
+
+    .info{
+        margin: 20px;
+        color: #717171;
+        line-height: 25px;
+    }
+
+    .main_content{
+        width: auto;
+        margin-left: 200px;
+    }
+
+    .main_content .header{
+        padding: 20px;
+        background: #fff;
+        color: #717171;
+        border-bottom: 1px solid #e0e4e8;
+    }
+
+    .main_content .info{
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 20px;
+        color: #717171;
+        line-height: 25px;
+    }
+
+    .main_content .info div{
+        margin-bottom: 20px;
+    }
+
+</style>
