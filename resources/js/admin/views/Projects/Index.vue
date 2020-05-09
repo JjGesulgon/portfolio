@@ -2,11 +2,11 @@
     <div class="main_content">
         <div class="info">
             <div class="mr-auto mt-5 lettering">
-                Skills
+                Projects
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createSkill"><i class="fas fa-user"></i>Create Skills</button>
+                    <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createProject"><i class="fas fa-user"></i>Create Project</button>
                     <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
                 </div>
                 <div class="card">
@@ -18,7 +18,7 @@
                             <caption>
                                 <div class="row">
                                     <div class="col-md-9">
-                                        List of Skills - Total Items {{ this.meta.total }}
+                                        List of Projects - Total Items {{ this.meta.total }}
                                     </div>
                                     <div class="col-md-3">
                                         <div class="progress" height="30px;" v-if="showProgress">
@@ -33,14 +33,14 @@
                                     <th scope="col">Options</th>
                                 </tr>
                             </thead>
-                            <tbody v-if="skills">
-                                <tr v-for="{ id, name } in skills">
+                            <tbody v-if="projects">
+                                <tr v-for="{ id, name } in projects">
                                     <td>{{ name }}</td>
                                     <td>
                                         <!-- <router-link class="text-info" :to="{ name: 'admins.view', params: { id: id }}">View</router-link> -->
-                                        <!-- <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewSkill(id)">View</button> -->
-                                        <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateSkill(id)">Edit</button>
-                                        <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteSkillModal(id)">Delete</button>
+                                        <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewProject(id)">View</button>
+                                        <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateProject(id)">Edit</button>
+                                        <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteProjectModal(id)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="deleteSkillModal" tabindex="-1" role="dialog" aria-labelledby="deleteSkillTitle" aria-hidden="true">
+                <div class="modal fade" id="deleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="deleteSkillTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -164,10 +164,10 @@
     </div>
 </template>
 <script>
-    const getSkills = (page, per_page, searchColumnName, order_by, callback) => {
+    const getProjects = (page, per_page, searchColumnName, order_by, callback) => {
         const params = { page, per_page, searchColumnName, order_by };
 
-        axios.get('/api/skills', { params }).then(res => {
+        axios.get('/api/projects', { params }).then(res => {
             callback(null, res.data);
         }).catch(error => {
             if (error.response.status == 401) {
@@ -182,8 +182,8 @@
     export default {
         data() {
             return {
-                skills: null,
-                skillID: null,
+                projects: null,
+                projectID: null,
                 searchColumnName: '',
                 order_by: 'desc',
                 meta: {
@@ -209,18 +209,18 @@
 
         beforeRouteEnter (to, from, next) {
             if (to.query.per_page == null) {
-                getSkills(to.query.page, 15, to.query.searchColumnName, to.query.order_by, (err, data) => {
+                getProjects(to.query.page, 15, to.query.searchColumnName, to.query.order_by, (err, data) => {
                     next(vm => vm.setData(err, data));
                 });
             } else {
-                getSkills(to.query.page, to.query.per_page, to.query.searchColumnName, to.query.order_by, (err, data) => {
+                getProjects(to.query.page, to.query.per_page, to.query.searchColumnName, to.query.order_by, (err, data) => {
                     next(vm => vm.setData(err, data));
                 });
             }
         },
 
         beforeRouteUpdate (to, from, next) {
-            getSkills(to.query.page, this.meta.per_page, to.query.searchColumnName, to.query.order_by, (err, data) => {
+            getProjects(to.query.page, this.meta.per_page, to.query.searchColumnName, to.query.order_by, (err, data) => {
                 this.setData(err, data);
                 next();
             });
@@ -258,34 +258,34 @@
         },
 
         methods: {
-            viewSkill(skillID) {
+            viewProject(projectID) {
                 this.$router.push({
-                        name: 'skill.view', 
-                        params: { id: skillId } 
+                        name: 'projects.view', 
+                        params: { id: projectId } 
                     })
             },
 
-            updateSkill(skillID) {
+            updateProject(projectID) {
                 this.$router.push({
-                        name: 'skill.update', 
-                        params: { id: skillID } 
+                        name: 'projects.update', 
+                        params: { id: projectID } 
                     })
             },
 
-            createSkill() {
+            createProject() {
                 this.$router.push({
-                    name: 'skills.create'
+                    name: 'projects.create'
                 });
             },
 
-            openDeleteSkillModal(id) {
-                $('#deleteSkillModal').modal('show');
-                this.skillID = id
+            openDeleteProjectModal(id) {
+                $('#deleteProjectModal').modal('show');
+                this.projectID = id
             },
             
             deleteSkill() {
-                $('#deleteSkillModal').modal('hide');
-                axios.delete('/api/skills/' + this.skillID).then(res => {
+                $('#deleteProjectModal').modal('hide');
+                axios.delete('/api/projects/' + this.projectID).then(res => {
                     this.$router.go()
                 }).catch(err => {
                     console.log(err);
@@ -296,7 +296,7 @@
             goToFirstPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page: 1,
                         per_page: this.meta.per_page,
@@ -309,7 +309,7 @@
             goToPage(page = null) {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page,
                         per_page: this.meta.per_page,
@@ -322,7 +322,7 @@
             goToLastPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page: this.meta.last_page,
                         per_page: this.meta.per_page,
@@ -335,7 +335,7 @@
             goToNextPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page: this.nextPage,
                         per_page: this.meta.per_page,
@@ -348,7 +348,7 @@
             goToPreviousPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page: this.prevPage,
                         per_page: this.meta.per_page,
@@ -358,13 +358,13 @@
                 });
             },
 
-            setData(err, { data: skills, links, meta }) {
+            setData(err, { data: projects, links, meta }) {
                 this.pageNumbers = [];
 
                 if (err) {
                     this.error = err.toString();
                 } else {
-                    this.skills = skills;
+                    this.projects = projects;
                     this.links = links;
                     this.meta = meta;
                 }
@@ -423,7 +423,7 @@
             changePerPage() {
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page: 1,
                         per_page: this.meta.per_page,
@@ -437,7 +437,7 @@
                 $('#searchModal').modal('hide');
                 this.showProgress = true;
                 this.$router.push({
-                    name: 'skills.index',
+                    name: 'projects.index',
                     query: {
                         page: 1,
                         per_page: this.meta.per_page,

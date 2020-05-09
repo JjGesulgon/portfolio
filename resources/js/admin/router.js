@@ -31,7 +31,7 @@ const SkillCreate = () => import('./views/Skills/Create');
 // const ExperienceUpdate = () => import('./views/Experience/Update');
 
 //Projects
-// const Skills = () => import('./views/Skills/Index');
+const Projects = () => import('./views/Projects/Index');
 // const ExperienceView = () => import('./views/Experience/View');
 const ProjectCreate = () => import('./views/Projects/Create');
 // const ExperienceUpdate = () => import('./views/Experience/Update');
@@ -69,7 +69,7 @@ const router = new VueRouter({
         //   { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
 
          // Project
-        //  { path: '/skills', name: 'skills.index', component: Skills },
+        { path: '/projects', name: 'projects.index', component: Projects },
          //   { path: '/eperience/:id', name: 'experience.view', component: ExperienceView },
          { path: '/projects/create', name: 'projects.create', component: ProjectCreate },
          //   { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },

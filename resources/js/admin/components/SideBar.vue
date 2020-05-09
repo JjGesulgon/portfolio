@@ -22,6 +22,9 @@
                     <li>
                         <router-link to="/skills"><i class="fas fa-dice-six"></i>Skills</router-link>
                     </li>
+                    <li>
+                        <router-link to="/projects"><i class="fas fa-project-diagram"></i>Projects</router-link>
+                    </li>
                 </ul> 
             </div>  
         </div>   
