@@ -5,13 +5,16 @@
                 Experience
             </div>
             <div>
-                <div class="d-flex flex-row-reverse">
+                <!-- <div class="d-flex flex-row-reverse">
                     <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createExperience"><i class="fas fa-user"></i>Create Experience</button>
                     <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
-                </div>
+                </div> -->
                 <div class="card">
                     <div class="card-header clearfix">
-                        
+                        <div class="d-flex flex-row-reverse header-margin">
+                            <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createExperience"><i class="fas fa-user"></i>Create Experience</button>
+                            <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
+                        </div>  
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover table-sm">
@@ -21,8 +24,8 @@
                                         List of Experiences - Total Items {{ this.meta.total }}
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="progress" height="30px;" v-if="showProgress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                        <div v-if="showProgress">
+                                            <div class="container loader"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -482,6 +485,9 @@
     }
 </script>
 <style scoped>
+    .header-margin{
+        margin-bottom: 0px !important;
+    }
     .display-flex{
          display: flex;
     }
@@ -511,7 +517,6 @@
 
     .main_content{
         width: auto;
-        margin-left: 200px;
     }
 
     .main_content .header{

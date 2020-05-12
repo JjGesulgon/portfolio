@@ -503,7 +503,6 @@
 
     .main_content{
         width: auto;
-        margin-left: 200px;
     }
 
     .main_content .header{

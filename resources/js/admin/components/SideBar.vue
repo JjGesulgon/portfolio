@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <!-- <div>  -->
         <div class="wrapper">
             <div class="sidebar">
                 <h2>Logo</h2>
@@ -28,7 +28,7 @@
                 </ul> 
             </div>  
         </div>   
-    </div>
+    <!-- </div> -->
 </template>
 <script>
 export default {

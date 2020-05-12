@@ -32,10 +32,6 @@
                                     <input type="text" class="form-control" v-model="experience.location">
                                 </div>
                                 <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" class="form-control" v-model="experience.location">
-                                </div>
-                                <div class="form-group">
                                     <label for="start_date">Start Date</label>
                                     <input type="date" class="form-control" v-model="experience.start_date">
                                 </div>
@@ -48,9 +44,7 @@
                             </fieldset>
                         </div>
                         <div v-else>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
+                            <div class="container loader"></div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +117,6 @@
 
     .main_content{
         width: auto;
-        margin-left: 200px;
     }
 
     .main_content .header{

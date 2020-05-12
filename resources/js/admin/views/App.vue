@@ -5,9 +5,11 @@
             integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
             crossorigin="anonymous">
 
-        <sidebar-component></sidebar-component>
-        <navbar-component></navbar-component>
-        <router-view></router-view>
+            <sidebar-component></sidebar-component>
+            <div class="viewMargin">
+                <navbar-component></navbar-component>
+                <router-view></router-view>
+            </div>
     </div>
 </template>
 <script>
@@ -24,6 +26,27 @@ export default {
         text-decoration: none;
         font-family: 'Josefin Sans', sans-serif;
     }
+
+    .viewMargin{
+        margin-left: 200px;
+    }
+
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 70px;
+        height: 70px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+        align-content: center;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
 
     body{
         background-color: #f3f5f9;
@@ -119,6 +142,15 @@ export default {
     @media (max-height: 500px){
         .social_media{
             display: none !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .wrapper {
+            display: none;
+        }
+        .viewMargin{
+            margin-left: 0px;
         }
     }
     

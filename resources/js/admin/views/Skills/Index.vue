@@ -21,8 +21,8 @@
                                         List of Skills - Total Items {{ this.meta.total }}
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="progress" height="30px;" v-if="showProgress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                        <div v-if="showProgress">
+                                            <div class="container loader"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -488,7 +488,6 @@
 
     .main_content{
         width: auto;
-        margin-left: 200px;
     }
 
     .main_content .header{

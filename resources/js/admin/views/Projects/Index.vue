@@ -21,8 +21,11 @@
                                         List of Projects - Total Items {{ this.meta.total }}
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="progress" height="30px;" v-if="showProgress">
+                                        <!-- <div class="progress" height="30px;" v-if="showProgress">
                                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                        </div> -->
+                                        <div v-if="showProgress">
+                                            <div class="container loader"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -258,10 +261,11 @@
         },
 
         methods: {
-            viewProject(projectID) {
+            viewProject(id) {
+                console.log(id)
                 this.$router.push({
                         name: 'projects.view', 
-                        params: { id: projectId } 
+                        params: { id: id } 
                     })
             },
 
@@ -488,7 +492,6 @@
 
     .main_content{
         width: auto;
-        margin-left: 200px;
     }
 
     .main_content .header{

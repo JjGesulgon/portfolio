@@ -2,33 +2,41 @@
     <div class="main_content">
         <div class="info">
             <div class="mr-auto mt-5 lettering">
-                Skills
+                Projects
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewSkills">Back</button>
+                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewProjects">Back</button>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New Skill
+                        View Projects
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
-                            <form v-on:submit.prevent="createNewSkill">
+                            <fieldset disabled>
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" v-model="projects.name">
                                 </div>
-                                <div v-if="errors != []">
-                                    <div class="alert alert-danger" v-for="error in errors">
-                                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                        <strong>Error!</strong> {{ error[0] }}
-                                    </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <div class="body" v-html="projects.description"></div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create New Skill</button>
-                            </form>
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <input type="text" class="form-control" v-model="projects.role">
+                                </div>
+                                <div class="form-group">
+                                    <label for="live_link">Live Link</label>
+                                    <input type="text" class="form-control" v-model="projects.live_link">
+                                </div>
+                                <div class="form-group">
+                                    <label for="github_link">Github Link</label>
+                                    <input type="text" class="form-control" v-model="projects.github_link">
+                                </div>
+                            </fieldset>
                         </div>
-
                         <div v-else>
                             <div class="container loader"></div>
                         </div>
@@ -42,34 +50,29 @@
     export default {
         data() {
             return {
-                ifReady: true,
-                name: '',
-                errors: []
+                ifReady: false,
+                projects: '',
+                isCurrent: '',
             };
         },
 
         mounted() {
-                var date = new Date();
-                this.start_date = date;
+            let promise = new Promise((resolve, reject) => {
+                axios.get('/api/projects/' + this.$route.params.id).then(res => {
+                    this.projects = res.data.project;
+                    resolve();
+                });
+            });
+
+            promise.then(() => {
+                this.ifReady = true;
+            });
         },
 
         methods: {
-            createNewSkill() {
-                this.ifReady = false;
-                this.errors = [];
-
-                axios.post('/api/skill', this.$data).then(res => {
-                     this.$router.push({ name: 'skills.index' });
-                }).catch(err => {
-                    this.errors = err.response.data.errors
-                    this.ifReady = true;
-                    console.log(err.response);
-                });
-            },
-
-            viewSkills() {
+            viewProjects() {
                 this.$router.push({
-                    name: 'skills.index'
+                    name: 'projects.index'
                 });
             },
         }
