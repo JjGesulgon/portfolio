@@ -41,9 +41,23 @@
                                     <td>{{ name }}</td>
                                     <td>
                                         <!-- <router-link class="text-info" :to="{ name: 'admins.view', params: { id: id }}">View</router-link> -->
-                                        <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewProject(id)">View</button>
-                                        <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateProject(id)">Edit</button>
-                                        <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteProjectModal(id)">Delete</button>
+                                        <!-- <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewProject(id)">View</button> -->
+                                        <router-link class="text-secondary" :to="{ name: 'projects.view', params: { id: id }}">
+                                            <i class="fas fa-eye"></i>&nbsp;
+                                            <strong>View</strong>
+                                        </router-link>
+                                        &nbsp; | &nbsp;
+                                        <!-- <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateProject(id)">Edit</button> -->
+                                        <router-link class="text-secondary" :to="{ name: 'projects.update', params: { id: id }}">
+                                            <i class="fas fa-edit"></i>&nbsp;
+                                            <strong>Edit</strong>
+                                        </router-link>
+                                        &nbsp; | &nbsp;
+                                        <!-- <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteProjectModal(id)">Delete</button> -->
+                                        <label class="text-danger clickableText" @click.prevent.default="openDeleteProjectModal(id)">
+                                            <i class="fas fa-trash-alt"></i>&nbsp;
+                                            <strong>Delete</strong>
+                                        </label>
                                     </td>
                                 </tr>
                             </tbody>

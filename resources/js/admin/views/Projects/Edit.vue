@@ -1,0 +1,185 @@
+<template>
+    <div class="main_content">
+        <div class="info">
+            <div class="mr-auto mt-5 lettering">
+                Projects
+            </div>
+            <div>
+                <div class="d-flex flex-row-reverse">
+                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewProject">Back</button>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Edit Project
+                    </div>
+                    <div class="card-body">
+                        <div v-if="ifReady">
+                            <form v-on:submit.prevent="editAdmin">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <tinymce-component
+                                        v-model="description"
+                                        api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
+                                        :init="{
+                                            height: 500,
+                                            menubar: false,
+                                            plugins: [
+                                            'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+                                            ],
+                                            menubar: 'file edit view insert format tools table help',
+                                            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+                                            toolbar_sticky: true,
+                                        }"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>Role</label>
+                                    <input type="text" class="form-control" v-model="role">
+                                </div>
+                                <div class="form-group">
+                                    <label>Live Link</label>
+                                    <input type="text" class="form-control" v-model="live_link">
+                                </div>
+                                <div class="form-group">
+                                    <label>Github Link</label>
+                                    <input type="text" class="form-control" v-model="github_link">
+                                </div>
+                                <div v-if="errors != []">
+                                    <div class="alert alert-danger" v-for="error in errors">
+                                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                        <strong>Error!</strong> {{ error[0] }}
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm" @click.prevent.default="updateProject">Update Experience</button>
+                            </form>
+                        </div>
+                        <div v-else>
+                            <div class="container loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                ifReady: false,
+                id: '',
+                name: '',
+                description: '',
+                role: '',
+                live_link: '',
+                github_link: '',
+                errors: []
+            };
+        },
+
+        mounted() {
+            let promise = new Promise((resolve, reject) => {
+                axios.get('/api/projects/' + this.$route.params.id).then(res => {
+                    console.log()
+                    this.id    = res.data.project.id;
+                    this.name  = res.data.project.name;
+                    this.description = res.data.project.description;
+                    this.role = res.data.project.role;
+                    this.live_link = res.data.project.live_link;
+                    this.github_link = res.data.project.github_link;
+                    resolve();
+                });
+            });
+
+            promise.then(() => {
+                this.ifReady = true;
+            });
+        },
+
+        methods: {
+            viewProject() {
+                this.$router.push({
+                    name: 'projects.index'
+                });
+            },
+            updateProject() {
+                this.errors = [];
+                this.ifReady = false;
+                let formData = new FormData();
+                formData.append('_method','PATCH');
+                formData.append('name', this.name);
+                formData.append('description', this.description);
+                formData.append('role', this.role);
+                formData.append('live_link', this.live_link);
+                formData.append('github_link', this.github_link);
+
+                axios.post('/api/projects/' + this.$route.params.id, formData).then(res => {
+                    this.$router.push({
+                        name: 'projects.index'
+                    });
+                    this.ifReady = true;
+                    }).catch(err => {
+                        this.errors = err.response.data.errors;
+                        this.ifReady = true;
+                        console.log(err);
+                    });
+            },
+        }
+    }
+</script>
+<style scoped>
+    .display-flex{
+         display: flex;
+    }
+
+    .navi-item{
+        margin-right: 210px !important;
+    }
+
+    .lettering{
+        font-size: 45px;
+    }
+    .header{
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        background: #fff;
+        color: #717171;
+        border-bottom: 1px solid #e0e4e8;
+    }
+
+    .info{
+        margin: 20px;
+        color: #717171;
+        line-height: 25px;
+    }
+
+    .main_content{
+        width: auto;
+    }
+
+    .main_content .header{
+        padding: 20px;
+        background: #fff;
+        color: #717171;
+        border-bottom: 1px solid #e0e4e8;
+    }
+
+    .main_content .info{
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 20px;
+        color: #717171;
+        line-height: 25px;
+    }
+
+    .main_content .info div{
+        margin-bottom: 20px;
+    }
+
+</style>

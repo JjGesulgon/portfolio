@@ -27,6 +27,11 @@ export default {
         font-family: 'Josefin Sans', sans-serif;
     }
 
+    .clickableText:hover {
+        text-decoration: underline;
+        cursor: pointer
+    }
+
     .viewMargin{
         margin-left: 200px;
     }

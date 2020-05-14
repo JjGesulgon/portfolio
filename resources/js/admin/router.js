@@ -22,7 +22,7 @@ const AboutEdit = () => import('./views/About/Edit');
 const Experience = () => import('./views/Experience/Index');
 const ExperienceView = () => import('./views/Experience/View');
 const ExperienceCreate = () => import('./views/Experience/Create');
-const ExperienceUpdate = () => import('./views/Experience/Update');
+const ExperienceUpdate = () => import('./views/Experience/Edit');
 
 //Skill
 const Skills = () => import('./views/Skills/Index');
@@ -34,7 +34,7 @@ const SkillCreate = () => import('./views/Skills/Create');
 const Projects = () => import('./views/Projects/Index');
 const ProjectView = () => import('./views/Projects/View');
 const ProjectCreate = () => import('./views/Projects/Create');
-// const ExperienceUpdate = () => import('./views/Experience/Update');
+const ProjectUpdate = () => import('./views/Projects/Edit');
 
 const router = new VueRouter({
     mode: 'history',
@@ -72,7 +72,7 @@ const router = new VueRouter({
         { path: '/projects', name: 'projects.index', component: Projects },
         { path: '/projects/:id', name: 'projects.view', component: ProjectView },
         { path: '/projects/create', name: 'projects.create', component: ProjectCreate },
-         //   { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
+        { path: '/projects/:id/edit', name: 'projects.update', component: ProjectUpdate },
     ]
 });
 
