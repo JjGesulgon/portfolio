@@ -32,6 +32,10 @@ export default {
         cursor: pointer
     }
 
+    .header-margin{
+        margin-bottom: 0px !important;
+    }
+
     .viewMargin{
         margin-left: 200px;
     }

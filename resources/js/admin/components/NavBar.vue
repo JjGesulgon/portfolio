@@ -4,25 +4,25 @@
             <b-button v-b-toggle.sidebar-variant v-if="isSmallScreen"><i class="fas fa-bars"></i></b-button>
                 <b-sidebar id="sidebar-variant" title="Sidebar" bg-variant="dark" text-variant="light" shadow>
                     <b-list-group>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/"><i class="fas fa-home"></i>&nbsp; Overview</router-link>
                         </b-list-group-item>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/users"><i class="fas fa-user"></i>&nbsp; Users</router-link>
                         </b-list-group-item>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/intro"><i class="fas fa-address-card"></i>&nbsp; Intro</router-link>
                         </b-list-group-item>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/about"><i class="fas fa-skull"></i>&nbsp; About</router-link>
                         </b-list-group-item>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/experience"><i class="fas fa-briefcase"></i>&nbsp; Experiences</router-link>
                         </b-list-group-item>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/skills"><i class="fas fa-dice-six"></i>&nbsp; Skills</router-link>
                         </b-list-group-item>
-                        <b-list-group-item variant="dark">
+                        <b-list-group-item>
                             <router-link to="/projects"><i class="fas fa-project-diagram"></i>&nbsp; Projects</router-link>
                         </b-list-group-item>
                     </b-list-group>

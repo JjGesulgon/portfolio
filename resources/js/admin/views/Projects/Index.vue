@@ -5,13 +5,25 @@
                 Projects
             </div>
             <div>
-                <div class="d-flex flex-row-reverse">
+                <!-- <div class="d-flex flex-row-reverse">
                     <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createProject"><i class="fas fa-user"></i>Create Project</button>
                     <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
-                </div>
+                </div> -->
                 <div class="card">
                     <div class="card-header clearfix">
-                        
+                        <div class="d-flex flex-row-reverse header-margin">
+                            <label class="text-secondary clickableText header-margin" @click.prevent.default="createProject">
+                                <i class="fas fa-plus-square"></i>&nbsp;
+                                <strong>Create Project</strong>
+                            </label>
+                            &nbsp; | &nbsp;
+                            <label class="text-secondary clickableText header-margin" @click.prevent.default="openSearchModal">
+                                <i class="fas fa-search"></i>&nbsp;
+                                <strong>Search</strong>
+                            </label>
+                            <!-- <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createProject"><i class="fas fa-user"></i>Create Project</button> -->
+                            <!-- <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button> -->
+                        </div>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover table-sm">
@@ -40,20 +52,16 @@
                                 <tr v-for="{ id, name } in projects">
                                     <td>{{ name }}</td>
                                     <td>
-                                        <!-- <router-link class="text-info" :to="{ name: 'admins.view', params: { id: id }}">View</router-link> -->
-                                        <!-- <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewProject(id)">View</button> -->
                                         <router-link class="text-secondary" :to="{ name: 'projects.view', params: { id: id }}">
                                             <i class="fas fa-eye"></i>&nbsp;
                                             <strong>View</strong>
                                         </router-link>
                                         &nbsp; | &nbsp;
-                                        <!-- <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateProject(id)">Edit</button> -->
                                         <router-link class="text-secondary" :to="{ name: 'projects.update', params: { id: id }}">
                                             <i class="fas fa-edit"></i>&nbsp;
                                             <strong>Edit</strong>
                                         </router-link>
                                         &nbsp; | &nbsp;
-                                        <!-- <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteProjectModal(id)">Delete</button> -->
                                         <label class="text-danger clickableText" @click.prevent.default="openDeleteProjectModal(id)">
                                             <i class="fas fa-trash-alt"></i>&nbsp;
                                             <strong>Delete</strong>
