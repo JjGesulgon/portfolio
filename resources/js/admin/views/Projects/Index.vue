@@ -5,39 +5,32 @@
                 Projects
             </div>
             <div>
-                <!-- <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createProject"><i class="fas fa-user"></i>Create Project</button>
-                    <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
-                </div> -->
                 <div class="card">
                     <div class="card-header clearfix">
                         <div class="d-flex flex-row-reverse header-margin">
                             <label class="text-secondary clickableText header-margin" @click.prevent.default="createProject">
                                 <i class="fas fa-plus-square"></i>&nbsp;
-                                <strong>Create Project</strong>
+                                <strong>Add Project</strong>
                             </label>
                             &nbsp; | &nbsp;
                             <label class="text-secondary clickableText header-margin" @click.prevent.default="openSearchModal">
                                 <i class="fas fa-search"></i>&nbsp;
                                 <strong>Search</strong>
                             </label>
-                            <!-- <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createProject"><i class="fas fa-user"></i>Create Project</button> -->
-                            <!-- <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button> -->
                         </div>
                     </div>
-                    <div class="card-body table-responsive">
+                    <div class="card-body table-responsive header-margin">
                         <table class="table table-hover table-sm">
                             <caption>
-                                <div class="row">
-                                    <div class="col-md-9">
+                                <div class="row header-margin">
+                                    <div class="col-md-9 header-margin">
                                         List of Projects - Total Items {{ this.meta.total }}
                                     </div>
-                                    <div class="col-md-3">
-                                        <!-- <div class="progress" height="30px;" v-if="showProgress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                                        </div> -->
+                                    <div class="col-md-3 header-margin">
                                         <div v-if="showProgress">
-                                            <div class="container loader"></div>
+                                            <div class="d-flex justify-content-center mb-3">
+                                                <b-spinner label="Loading..."></b-spinner>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -77,17 +70,19 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">You're about to delete this Skill</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">You're about to delete this project</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete this Skill?
+                                Are you sure you want to delete this Project?
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="deleteSkill">Confirm Delete</button>
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                            <div class="modal-footer header-margin">
+                                <label class="text-danger clickableText header-margin" @click.prevent.default="deleteSkill">
+                                    <i class="fas fa-trash-alt"></i>&nbsp;
+                                    <strong>Confirm Delete</strong>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -175,10 +170,19 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success btn-sm" @click.prevent.default="clear">Clear</button>
-                                    <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="search">Search</button>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                <div class="modal-footer header-margin">
+                                    <!-- <button type="button" class="btn btn-success btn-sm" @click.prevent.default="clear">Clear</button>
+                                    <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="search">Search</button> -->
+                                    <!-- <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button> -->
+                                    <label class="text-secondary clickableText header-margin" @click.prevent.default="clear">
+                                        <i class="fas fa-redo-alt"></i>&nbsp;
+                                        <strong>Clear</strong>
+                                    </label>
+                                    &nbsp; | &nbsp;
+                                    <label class="text-secondary clickableText header-margin" @click.prevent.default="search">
+                                        <i class="fas fa-search"></i>&nbsp;
+                                        <strong>Search</strong>
+                                    </label>
                                 </div>
                             </div>
                         </div>

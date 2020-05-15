@@ -6,17 +6,20 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewSkills">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewSkills">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New Skill
+                        <router-link to="/skills">Skills</router-link>&nbsp;>> Add Skill
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="createNewSkill">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label><strong>Name</strong></label>
                                     <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div v-if="errors != []">
@@ -25,12 +28,14 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create New Skill</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Create New Skill</button>
                             </form>
                         </div>
 
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>

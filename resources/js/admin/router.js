@@ -43,7 +43,7 @@ const router = new VueRouter({
         { path: '/', name: 'overview', component: Overview },
         { path: '/users', name: 'users.index', component: Users },
         { path: '/users/create', name: 'users.create', component: UsersCreate },
-        { path: '/users/:id', name: 'users.view', component: UsersView },
+        { path: '/users/:id/view', name: 'users.view', component: UsersView },
         { path: '/users/:id/edit', name: 'users.update', component: UsersUpdate },
 
         // Intro
@@ -58,7 +58,7 @@ const router = new VueRouter({
 
          // Experience
         { path: '/experience', name: 'experience.index', component: Experience },
-        { path: '/eperience/:id', name: 'experience.view', component: ExperienceView },
+        { path: '/eperience/:id/view', name: 'experience.view', component: ExperienceView },
         { path: '/experience/create', name: 'experience.create', component: ExperienceCreate },
         { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
 
@@ -70,7 +70,7 @@ const router = new VueRouter({
 
          // Project
         { path: '/projects', name: 'projects.index', component: Projects },
-        { path: '/projects/:id', name: 'projects.view', component: ProjectView },
+        { path: '/projects/:id/view', name: 'projects.view', component: ProjectView },
         { path: '/projects/create', name: 'projects.create', component: ProjectCreate },
         { path: '/projects/:id/edit', name: 'projects.update', component: ProjectUpdate },
     ]

@@ -6,11 +6,14 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewProjects">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewProjects">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New Project
+                        <router-link to="/projects">Projects</router-link>&nbsp;>> Create Project
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
@@ -21,7 +24,6 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <!-- <textarea class="form-control" v-model="body" id="body" rows="20"></textarea> -->
                                     <tinymce-component
                                         v-model="description"
                                         api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
@@ -55,12 +57,14 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create New Project</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Create New Project</button>
                             </form>
                         </div>
 
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>

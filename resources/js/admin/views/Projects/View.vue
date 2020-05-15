@@ -6,39 +6,44 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewProjects">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewProjects">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        View Projects
+                        <router-link to="/projects">Projects</router-link>&nbsp;>> View Project
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
                             <fieldset disabled>
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name"><strong>Name</strong></label>
                                     <input type="text" class="form-control" v-model="projects.name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description"><strong>Description</strong></label>
                                     <div class="body" v-html="projects.description"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="role">Role</label>
+                                    <label for="role"><strong>Role</strong></label>
                                     <input type="text" class="form-control" v-model="projects.role">
                                 </div>
                                 <div class="form-group">
-                                    <label for="live_link">Live Link</label>
+                                    <label for="live_link"><strong>Live Link</strong></label>
                                     <input type="text" class="form-control" v-model="projects.live_link">
                                 </div>
                                 <div class="form-group">
-                                    <label for="github_link">Github Link</label>
+                                    <label for="github_link"><strong>Github Link</strong></label>
                                     <input type="text" class="form-control" v-model="projects.github_link">
                                 </div>
                             </fieldset>
                         </div>
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>

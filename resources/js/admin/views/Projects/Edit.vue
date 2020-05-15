@@ -6,21 +6,24 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewProject">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewProject">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Edit Project
+                        <router-link to="/projects">Projects</router-link>&nbsp;>> Edit Project
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="editAdmin">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label><strong>Name</strong></label>
                                     <input type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255">
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label><strong>Description</strong></label>
                                     <tinymce-component
                                         v-model="description"
                                         api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
@@ -37,15 +40,15 @@
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <label>Role</label>
+                                    <label><strong>Role</strong></label>
                                     <input type="text" class="form-control" v-model="role">
                                 </div>
                                 <div class="form-group">
-                                    <label>Live Link</label>
+                                    <label><strong>Live Link</strong></label>
                                     <input type="text" class="form-control" v-model="live_link">
                                 </div>
                                 <div class="form-group">
-                                    <label>Github Link</label>
+                                    <label><strong>Github Link</strong></label>
                                     <input type="text" class="form-control" v-model="github_link">
                                 </div>
                                 <div v-if="errors != []">
@@ -54,11 +57,13 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" @click.prevent.default="updateProject">Update Experience</button>
+                                <button type="button" class="btn btn-secondary btn-sm" @click.prevent.default="updateProject">Update Experience</button>
                             </form>
                         </div>
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>
