@@ -6,21 +6,24 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewUsers">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewUser">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Edit User
+                       <router-link to="/users">Users</router-link>&nbsp;>> Edit User
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="editAdmin">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label><strong>Name</strong></label>
                                     <input type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email Address</label>
+                                    <label><strong>Email Address</strong></label>
                                     <input type="email" class="form-control" v-model="email" disabled>
                                 </div>
                                 <div v-if="errors != []">
@@ -29,12 +32,12 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" @click.prevent.default="updateUser">Update User</button>
+                                <button type="button" class="btn btn-secondary btn-sm" @click.prevent.default="updateUser">Update User</button>
                             </form>
                         </div>
                         <div v-else>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
                             </div>
                         </div>
                     </div>
@@ -74,7 +77,7 @@
         methods: {
             viewUser() {
                 this.$router.push({
-                    name: 'user.index'
+                    name: 'users.index'
                 });
             },
             updateUser() {

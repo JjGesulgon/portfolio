@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <router-link to="/projects">Projects</router-link>&nbsp;>> View Project
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <fieldset disabled>
                                 <div class="form-group">

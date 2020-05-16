@@ -6,29 +6,32 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewUsers">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewUsers">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New User
+                        <router-link to="/users">Users</router-link>&nbsp;>> Add User
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="createNewAdmin">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label><strong>Name</strong></label>
                                     <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email Address</label>
+                                    <label><strong>Email Address</strong></label>
                                     <input type="email" class="form-control" v-model="email" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label><strong>Password</strong></label>
                                     <input type="password" class="form-control" v-model="password" autocomplete="off" minlength="6" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Password Confirmation</label>
+                                    <label><strong>Password Confirmation</strong></label>
                                     <input type="password" class="form-control" v-model="password_confirmation" autocomplete="off" minlength="6" maxlength="255" required>
                                 </div>
                                 <div v-if="errors != []">
@@ -37,7 +40,7 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create New User</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Add User</button>
                             </form>
                         </div>
 

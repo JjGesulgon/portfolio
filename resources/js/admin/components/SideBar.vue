@@ -11,10 +11,8 @@
                         <router-link to="/users"><i class="fas fa-user"></i>Users</router-link>
                     </li>
                     <li>
-                        <router-link to="/intro"><i class="fas fa-address-card"></i>Intro</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/about"><i class="fas fa-skull"></i>About</router-link>
+                        <!-- fas fa-skull -->
+                        <router-link to="/about"><i class="fas fa-address-card"></i>About</router-link>
                     </li>
                     <li>
                         <router-link to="/experience"><i class="fas fa-briefcase"></i>Experiences</router-link>

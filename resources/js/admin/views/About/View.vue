@@ -6,22 +6,21 @@
             </div>
             <div>
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header header-margin">
                         View About
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <p class="text-center" v-if="!hasAbout"> No About Yet</p>
                             <br>
                             <div class="body" v-html="about.body"></div>
                             <br>
-                            <br>
                             <label v-if="!hasAbout" class="text-secondary clickableText header-margin" @click.prevent.default="addAbout">
                                 <i class="fas fa-plus-square"></i>&nbsp;
                                 <strong>Add About</strong>
                             </label>
-                            <div v-if="hasAbout">
-                                <router-link class="text-secondary" :to="{ name: 'about.edit', params: { id: id }}">
+                            <div v-if="hasAbout" class="header-margin">
+                                <router-link class="text-secondary" :to="{ name: 'about.edit'}">
                                     <i class="fas fa-edit"></i>&nbsp;
                                     <strong>Edit About</strong>
                                 </router-link>
@@ -70,7 +69,7 @@
      export default {
         data() {
             return {
-                ifReady: true,
+                ifReady: false,
                 about: '',
                 hasAbout: false,
             };
@@ -78,10 +77,13 @@
         mounted() {
             let promise = new Promise((resolve, reject) => {
                 axios.get('/api/about').then(res => {
+                    console.log(res);
                     this.about = res.data.about;
                     this.hasAbout = true
-                    // this.ifReady = true
+                    this.ifReady = true
                     resolve();
+                }).catch(error => {
+                    this.ifReady = true
                 });
             });
         },

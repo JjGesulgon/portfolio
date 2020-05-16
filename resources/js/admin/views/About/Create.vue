@@ -13,7 +13,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <router-link to="/about">About</router-link>&nbsp;>> Add About
+                        <router-link to="/about">About</router-link>&nbsp;>> Create About
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
