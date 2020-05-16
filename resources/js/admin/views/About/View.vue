@@ -16,12 +16,26 @@
                             <div class="body" v-html="about.body"></div>
                             <br>
                             <br>
-                            <button type="button" v-if="!hasAbout" class="btn btn-primary btn-sm" @click.prevent.default="addAbout">Add About</button>
-                            <button type="button" v-if="hasAbout" class="btn btn-primary btn-sm" @click.prevent.default="editAbout">Edit About</button>
-                            <button type="button" v-if="hasAbout" class="btn btn-danger btn-sm" @click.prevent.default="openDeleteAboutModal">Delete About</button>
+                            <label v-if="!hasAbout" class="text-secondary clickableText header-margin" @click.prevent.default="addAbout">
+                                <i class="fas fa-plus-square"></i>&nbsp;
+                                <strong>Add About</strong>
+                            </label>
+                            <div v-if="hasAbout">
+                                <router-link class="text-secondary" :to="{ name: 'about.edit', params: { id: id }}">
+                                    <i class="fas fa-edit"></i>&nbsp;
+                                    <strong>Edit About</strong>
+                                </router-link>
+                                &nbsp; | &nbsp;
+                                <label class="text-danger clickableText" @click.prevent.default="openDeleteAboutModal">
+                                    <i class="fas fa-trash-alt"></i>&nbsp;
+                                    <strong>Delete About</strong>
+                                </label>
+                            </div>
                         </div>
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,9 +53,11 @@
                             <div class="modal-body">
                                 Are you sure you want to delete this About?
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="deleteAbout">Confirm Delete</button>
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                            <div class="modal-footer header-margin">
+                                <label class="text-danger clickableText header-margin" @click.prevent.default="deleteAbout">
+                                    <i class="fas fa-trash-alt"></i>&nbsp;
+                                    <strong>Confirm Delete</strong>
+                                </label>
                             </div>
                         </div>
                     </div>`
@@ -64,6 +80,7 @@
                 axios.get('/api/about').then(res => {
                     this.about = res.data.about;
                     this.hasAbout = true
+                    // this.ifReady = true
                     resolve();
                 });
             });
@@ -82,6 +99,7 @@
                 $('#deleteAboutModal').modal('show');
             },
             deleteAbout() {
+                this.ifReady = false;
                 $('#deleteAboutModal').modal('hide');
                 axios.delete('/api/about/' + this.about.id).then(res => {
                     this.$router.go()

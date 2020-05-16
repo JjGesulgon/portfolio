@@ -6,39 +6,42 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewExperience">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewExperience">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New Experience
+                        <router-link to="/experience">Experiences</router-link>&nbsp;>> Add Experience
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="createNewExperience">
                                 <div class="form-group">
-                                    <label>Role</label>
+                                    <label><strong>Role</strong></label>
                                     <input id="role" type="text" class="form-control" v-model="role" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Company Name</label>
+                                    <label><strong>Company Name</strong></label>
                                     <input type="text" class="form-control" v-model="company_name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Employment Type</label>
+                                    <label><strong>Employment Type</strong></label>
                                     <input type="text" class="form-control" v-model="employment_type" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Location</label>
+                                    <label><strong>Location</strong></label>
                                     <input type="text" class="form-control" v-model="location" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Start Date</label>
+                                    <label><strong>Start Date</strong></label>
                                     <input type="date" class="form-control" v-model="start_date" autocomplete="off" required>
                                 </div>
                                 <input type="checkbox" id="isCurrent" v-model="isCurrent">
-                                <label for="isCurrent">Current Job</label>
+                                <label for="isCurrent"><strong>Current Job</strong></label>
                                 <div class="form-group" v-if="!isCurrent">
-                                    <label>End Date</label>
+                                    <label><strong>End Date</strong></label>
                                     <input type="date" class="form-control" v-model="end_date" autocomplete="off">
                                 </div>
                                 <div v-if="errors != []">
@@ -47,12 +50,14 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create New Experience</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Add Experience</button>
                             </form>
                         </div>
 
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -6,45 +6,50 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewExperience">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewExperience">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        View Experience
+                        <router-link to="/experience">Experience</router-link>&nbsp;>> View Experience
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
                             <fieldset disabled>
                                 <div class="form-group">
-                                    <label for="role">Role</label>
+                                    <label for="role"><strong>Role</strong></label>
                                     <input type="text" class="form-control" v-model="experience.role">
                                 </div>
                                 <div class="form-group">
-                                    <label for="company_name">Company Name</label>
+                                    <label for="company_name"><strong>Company Name</strong></label>
                                     <input type="text" class="form-control" v-model="experience.company_name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="employment_type">Employment Type</label>
+                                    <label for="employment_type"><strong>Employment Type</strong></label>
                                     <input type="text" class="form-control" v-model="experience.employment_type">
                                 </div>
                                 <div class="form-group">
-                                    <label for="location">Location</label>
+                                    <label for="location"><strong>Location</strong></label>
                                     <input type="text" class="form-control" v-model="experience.location">
                                 </div>
                                 <div class="form-group">
-                                    <label for="start_date">Start Date</label>
+                                    <label for="start_date"><strong>Start Date</strong></label>
                                     <input type="date" class="form-control" v-model="experience.start_date">
                                 </div>
                                 <input type="checkbox" id="isCurrent" v-model="isCurrent">
-                                <label for="isCurrent">Current Job</label>
+                                <label for="isCurrent"><strong>Current Job</strong></label>
                                 <div class="form-group" v-if="!isCurrent">
-                                    <label for="end_date">End Date</label>
+                                    <label for="end_date"><strong>End Date</strong></label>
                                     <input type="date" class="form-control" v-model="experience.end_date">
                                 </div>
                             </fieldset>
                         </div>
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>

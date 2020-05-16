@@ -147,7 +147,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Name</label>
+                                        <label><strong>Name</strong></label>
                                         <input type="text" class="form-control" v-model="searchColumnName" autocomplete="off" minlength="2" maxlength="255" required>
                                     </div>
                                     <div class="form-group">

@@ -5,25 +5,28 @@
                 Experience
             </div>
             <div>
-                <!-- <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createExperience"><i class="fas fa-user"></i>Create Experience</button>
-                    <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
-                </div> -->
                 <div class="card">
                     <div class="card-header clearfix">
                         <div class="d-flex flex-row-reverse header-margin">
-                            <button type="button"  class="btn btn-success ml-2" @click.prevent.default="createExperience"><i class="fas fa-user"></i>Create Experience</button>
-                            <button type="button" class="btn btn-primary" @click.prevent.default="openSearchModal">Search</button>
+                            <label class="text-secondary clickableText header-margin" @click.prevent.default="createExperience">
+                                <i class="fas fa-plus-square"></i>&nbsp;
+                                <strong>Add Experience</strong>
+                            </label>
+                            &nbsp; | &nbsp;
+                            <label class="text-secondary clickableText header-margin" @click.prevent.default="openSearchModal">
+                                <i class="fas fa-search"></i>&nbsp;
+                                <strong>Search</strong>
+                            </label>
                         </div>  
                     </div>
-                    <div class="card-body table-responsive">
+                    <div class="card-body table-responsive header-margin">
                         <table class="table table-hover table-sm">
                             <caption>
-                                <div class="row">
-                                    <div class="col-md-9">
+                                <div class="row header-margin">
+                                    <div class="col-md-9 header-margin">
                                         List of Experiences - Total Items {{ this.meta.total }}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 header-margin">
                                         <div v-if="showProgress">
                                             <div class="container loader"></div>
                                         </div>
@@ -48,12 +51,23 @@
                                     <td>{{ employment_type }}</td>
                                     <td>{{ location }}</td>
                                     <td>{{ start_date }}</td>
-                                    <td>{{ end_date }}</td>
+                                    <td v-if="end_date">{{ end_date }}</td>
+                                    <td v-else>N/A</td>
                                     <td>
-                                        <!-- <router-link class="text-info" :to="{ name: 'admins.view', params: { id: id }}">View</router-link> -->
-                                        <button type="button" class="btn btn-primary ml-2" @click.prevent.default="viewExperiences(id)">View</button>
-                                        <button type="button" class="btn btn-warning ml-2" @click.prevent.default="updateExperiences(id)">Edit</button>
-                                        <button type="button" class="btn btn-danger ml-2" @click.prevent.default="openDeleteExperienceModal(id)">Delete</button>
+                                        <router-link class="text-secondary" :to="{ name: 'experience.view', params: { id: id }}">
+                                            <i class="fas fa-eye"></i>&nbsp;
+                                            <strong>View</strong>
+                                        </router-link>
+                                        &nbsp; | &nbsp;
+                                        <router-link class="text-secondary" :to="{ name: 'experience.update', params: { id: id }}">
+                                            <i class="fas fa-edit"></i>&nbsp;
+                                            <strong>Edit</strong>
+                                        </router-link>
+                                        &nbsp; | &nbsp;
+                                        <label class="text-danger clickableText" @click.prevent.default="openDeleteExperienceModal(id)">
+                                            <i class="fas fa-trash-alt"></i>&nbsp;
+                                            <strong>Delete</strong>
+                                        </label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -73,9 +87,11 @@
                             <div class="modal-body">
                                 Are you sure you want to delete this Experience?
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="deleteExperience">Confirm Delete</button>
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                            <div class="modal-footer header-margin">
+                                <label class="text-danger clickableText header-margin" @click.prevent.default="deleteExperience">
+                                    <i class="fas fa-trash-alt"></i>&nbsp;
+                                    <strong>Confirm Delete</strong>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -152,25 +168,31 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Role</label>
+                                        <label><strong>Role</strong></label>
                                         <input type="text" class="form-control" v-model="searchColumnRole" autocomplete="off" minlength="2" maxlength="255" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Company Name</label>
+                                        <label><strong>Company Name</strong></label>
                                         <input type="email" class="form-control" v-model="searchColumnCompanyName" autocomplete="off" minlength="2" maxlength="255" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Order By</label>
+                                        <label><strong>Order By</strong></label>
                                         <select class="form-control" v-model="order_by">
                                             <option value="desc">Newest</option>
                                             <option value="asc">Oldest</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success btn-sm" @click.prevent.default="clear">Clear</button>
-                                    <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="search">Search</button>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                <div class="modal-footer header-margin">
+                                    <label class="text-secondary clickableText header-margin" @click.prevent.default="clear">
+                                        <i class="fas fa-redo-alt"></i>&nbsp;
+                                        <strong>Clear</strong>
+                                    </label>
+                                    &nbsp; | &nbsp;
+                                    <label class="text-secondary clickableText header-margin" @click.prevent.default="search">
+                                        <i class="fas fa-search"></i>&nbsp;
+                                        <strong>Search</strong>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -485,9 +507,6 @@
     }
 </script>
 <style scoped>
-    .header-margin{
-        margin-bottom: 0px !important;
-    }
     .display-flex{
          display: flex;
     }

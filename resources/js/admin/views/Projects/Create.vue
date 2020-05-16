@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <router-link to="/projects">Projects</router-link>&nbsp;>> Create Project
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="createNewProject">
                                 <div class="form-group">
@@ -57,7 +57,7 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-secondary btn-sm">Create New Project</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Add Project</button>
                             </form>
                         </div>
 

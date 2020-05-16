@@ -105,7 +105,7 @@
                 });
             },
 
-             onFileSelected(event) {
+            onFileSelected(event) {
                 this.image = event.target.files[0];
             },
         }

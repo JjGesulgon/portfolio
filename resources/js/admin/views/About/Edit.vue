@@ -6,25 +6,20 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewAbout">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewAbout">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Edit About
+                        <router-link to="/about">About</router-link>&nbsp;>> Edit About
                     </div>
-                    <div class="card-body">
+                    <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="updateAbout">
                                 <div class="form-group">
-                                    <label>Image (optional)</label>
-                                    <input type="file" class="form-control-file" @change="onFileSelected">
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" v-model="name" minlength="2" maxlength="255" autocomplete="off" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Body</label>
+                                    <label><strong>Body</strong></label>
                                     <tinymce-component
                                         v-model="body"
                                         api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
@@ -47,11 +42,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="btn btn-success btn-sm" @click.prevent.default="updateAbout">Update About</button>
+                                <button type="button" class="btn btn-secondary btn-sm" @click.prevent.default="updateAbout">Update About</button>
                             </form>
                         </div>
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,6 +107,10 @@
                 this.$router.push({
                     name: 'about.index'
                 });
+            },
+
+            onFileSelected(event) {
+                this.image = event.target.files[0];
             },
         }
     }

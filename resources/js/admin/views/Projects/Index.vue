@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Name</label>
+                                        <label><strong>Name</strong></label>
                                         <input type="text" class="form-control" v-model="searchColumnName" autocomplete="off" minlength="2" maxlength="255" required>
                                     </div>
                                     <div class="form-group">
@@ -171,9 +171,6 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer header-margin">
-                                    <!-- <button type="button" class="btn btn-success btn-sm" @click.prevent.default="clear">Clear</button>
-                                    <button type="button" class="btn btn-danger btn-sm" @click.prevent.default="search">Search</button> -->
-                                    <!-- <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button> -->
                                     <label class="text-secondary clickableText header-margin" @click.prevent.default="clear">
                                         <i class="fas fa-redo-alt"></i>&nbsp;
                                         <strong>Clear</strong>

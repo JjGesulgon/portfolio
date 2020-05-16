@@ -6,17 +6,20 @@
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <button type="button"  class="btn btn-secondary" @click.prevent.default="viewAbout">Back</button>
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewAbout">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
+                        <strong>Back</strong>
+                    </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        Create New About
+                        <router-link to="/about">About</router-link>&nbsp;>> Add About
                     </div>
                     <div class="card-body">
                         <div v-if="ifReady">
                             <form v-on:submit.prevent="createNewAbout">
                                 <div class="form-group">
-                                    <label>Body</label>
+                                    <label><strong>Body</strong></label>
                                     <!-- <textarea class="form-control" v-model="body" id="body" rows="20"></textarea> -->
                                     <tinymce-component
                                         v-model="body"
@@ -39,12 +42,14 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Create About</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Create About</button>
                             </form>
                         </div>
 
                         <div v-else>
-                            <div class="container loader"></div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,6 +94,10 @@
                 this.$router.push({
                     name: 'about.index'
                 });
+            },
+
+            onFileSelected(event) {
+                this.image = event.target.files[0];
             },
         }
     }
