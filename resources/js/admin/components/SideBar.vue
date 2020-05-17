@@ -1,8 +1,9 @@
 <template>
     <!-- <div>  -->
         <div class="wrapper">
-            <div class="sidebar">
-                <h2>Logo</h2>
+            <div class="sidebar logo">
+                <!-- <h2>Logo</h2> -->
+                <img src="/assets/logo_v2.png" width="200" height="200">
                 <ul>
                     <li>
                         <router-link to="/"><i class="fas fa-home"></i>Overview</router-link>
@@ -33,3 +34,8 @@ export default {
     name: "navbar-component",
 }
 </script>
+<style>
+    .logo {
+        padding-top: 0px !important;
+    }
+</style>
