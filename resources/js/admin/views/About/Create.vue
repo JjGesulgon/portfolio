@@ -82,11 +82,13 @@
                 formData.append('body', tinyMCE.activeEditor.getContent());
 
                 axios.post('/api/about', formData).then(res => {
+                    this.toast('Success','About added', 'Successfully submitted the request', 'secondary')
                     this.$router.push({ name: 'about.index' });
                 }).catch(err => {
                     this.errors = err.response.data.errors
                     this.ifReady = true;
                     console.log(err.response);
+                    this.toast('Error','Failed to submit', 'Unable to process request!', 'danger')
                 });
             },
 
@@ -98,6 +100,45 @@
 
             onFileSelected(event) {
                 this.image = event.target.files[0];
+            },
+
+            toast(title, subtitle, body, variant) {
+                // Toast element
+                const h = this.$createElement
+
+                // Increment the toast count
+                this.count++
+
+                // Create the message
+                const vNodesMsg = h(
+                'p',
+                { class: ['text-center', 'mb-0'] },
+                [
+                    h('b-spinner', { props: { type: 'grow', small: true } }),
+                    `  `,
+                    h('strong', { class: 'text-muted' }, body),
+                    `  `,
+                    // ` ${body} `,
+                    h('b-spinner', { props: { type: 'grow', small: true } })
+                ]
+                )
+
+                // Create the title
+                const vNodesTitle = h(
+                'div',
+                { class: ['d-flex', 'flex-grow-1', 'align-items-baseline', 'mr-2'] },
+                [
+                    h('strong', { class: 'mr-2' }, title),
+                    h('small', { class: 'ml-auto text-italics' }, subtitle)
+                ]
+                )
+                // Pass the VNodes as an array for message and title
+                this.$bvToast.toast([vNodesMsg], {
+                    title: [vNodesTitle],
+                    solid: true,
+                    toaster: 'b-toaster-bottom-right',
+                    variant: variant
+                })
             },
         }
     }

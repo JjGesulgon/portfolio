@@ -313,11 +313,52 @@
             deleteSkill() {
                 $('#deleteProjectModal').modal('hide');
                 axios.delete('/api/projects/' + this.projectID).then(res => {
+                    this.toast('Success','Project deleted', 'Successfully deleted the skill', 'secondary')
                     this.$router.go()
                 }).catch(err => {
                     console.log(err);
-                    alert("Unable to remove this user because of conflicts to other modules.");
+                    // alert("Unable to remove this user because of conflicts to other modules.");
+                    this.toast('Error','Failed to delete', 'Unable to process request!', 'danger')
                 });
+            },
+
+            toast(title, subtitle, body, variant) {
+                // Toast element
+                const h = this.$createElement
+
+                // Increment the toast count
+                this.count++
+
+                // Create the message
+                const vNodesMsg = h(
+                'p',
+                { class: ['text-center', 'mb-0'] },
+                [
+                    h('b-spinner', { props: { type: 'grow', small: true } }),
+                    `  `,
+                    h('strong', { class: 'text-muted' }, body),
+                    `  `,
+                    // ` ${body} `,
+                    h('b-spinner', { props: { type: 'grow', small: true } })
+                ]
+                )
+
+                // Create the title
+                const vNodesTitle = h(
+                'div',
+                { class: ['d-flex', 'flex-grow-1', 'align-items-baseline', 'mr-2'] },
+                [
+                    h('strong', { class: 'mr-2' }, title),
+                    h('small', { class: 'ml-auto text-italics' }, subtitle)
+                ]
+                )
+                // Pass the VNodes as an array for message and title
+                this.$bvToast.toast([vNodesMsg], {
+                    title: [vNodesTitle],
+                    solid: true,
+                    toaster: 'b-toaster-bottom-right',
+                    variant: variant
+                })
             },
 
             goToFirstPage() {

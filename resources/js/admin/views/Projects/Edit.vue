@@ -57,7 +57,7 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-secondary btn-sm" @click.prevent.default="updateProject">Update Experience</button>
+                                <button type="button" class="btn btn-secondary btn-sm" @click.prevent.default="updateProject">Update Project</button>
                             </form>
                         </div>
                         <div v-else>
@@ -123,6 +123,7 @@
                 formData.append('github_link', this.github_link);
 
                 axios.post('/api/projects/' + this.$route.params.id, formData).then(res => {
+                    this.toast('Success','Project updated', 'Successfully submitted the request', 'secondary')
                     this.$router.push({
                         name: 'projects.index'
                     });
@@ -131,7 +132,47 @@
                         this.errors = err.response.data.errors;
                         this.ifReady = true;
                         console.log(err);
+                        this.toast('Error','Failed to submit', 'Unable to process request!', 'danger')
                     });
+            },
+
+            toast(title, subtitle, body, variant) {
+                // Toast element
+                const h = this.$createElement
+
+                // Increment the toast count
+                this.count++
+
+                // Create the message
+                const vNodesMsg = h(
+                'p',
+                { class: ['text-center', 'mb-0'] },
+                [
+                    h('b-spinner', { props: { type: 'grow', small: true } }),
+                    `  `,
+                    h('strong', { class: 'text-muted' }, body),
+                    `  `,
+                    // ` ${body} `,
+                    h('b-spinner', { props: { type: 'grow', small: true } })
+                ]
+                )
+
+                // Create the title
+                const vNodesTitle = h(
+                'div',
+                { class: ['d-flex', 'flex-grow-1', 'align-items-baseline', 'mr-2'] },
+                [
+                    h('strong', { class: 'mr-2' }, title),
+                    h('small', { class: 'ml-auto text-italics' }, subtitle)
+                ]
+                )
+                // Pass the VNodes as an array for message and title
+                this.$bvToast.toast([vNodesMsg], {
+                    title: [vNodesTitle],
+                    solid: true,
+                    toaster: 'b-toaster-bottom-right',
+                    variant: variant
+                })
             },
         }
     }
