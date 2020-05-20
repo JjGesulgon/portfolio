@@ -3,7 +3,9 @@
         <div class="wrapper">
             <div class="sidebar logo">
                 <!-- <h2>Logo</h2> -->
-                <img src="/assets/logo_v2.png" width="200" height="200">
+                <div class="text-center">
+                    <img src="/assets/logo_v3.png" width="150" height="150">
+                </div>
                 <ul>
                     <li>
                         <router-link to="/"><i class="fas fa-home"></i>Overview</router-link>
