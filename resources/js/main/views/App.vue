@@ -17,6 +17,14 @@ export default {
 }
 </script>
 <style>
+@media (min-width: 800px) and (max-width: 850px) {
+            .navbar-style:not(.top-nav-collapse) {
+                background: #1C2331!important;
+            }
+        }
+.view,body,html{height:100%}.navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar-style{background-color:#1C2331}}
+
+
     *{
         margin: 0;
         padding: 0;

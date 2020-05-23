@@ -1,32 +1,24 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top" v-bind:style="bgc">
-        <a class="navbar-brand text-item-color" href="/">
-                Hello World
-                <!-- <img src="/images/amclogo-medium.png" width="150" height="50" class="mr-2"> -->
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div>
+        <b-navbar toggleable="lg" type="dark" class="navbar-inner" fixed="top">
+            <!-- <b-navbar-brand href="#">
+                <b-img-lazy v-bind="mainProps" left src="/assets/logo_v3.png" alt="Left image"></b-img-lazy>
+            </b-navbar-brand> -->
 
-        <div class="collapse navbar-collapse my-2 my-lg-0" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <router-link class="nav-link text-item-color" :to="{ name: 'overview'}" >Home</router-link>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-item-color" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Nav Dropdown
-                    </a>
-                    <div class="dropdown-menu">
-                        <!-- <router-link class="dropdown-item" :to="{ name: 'about-bacolod.quick-facts.geophysical' }">Quick Facts</router-link> -->
-                        <a class="dropdown-item" target="_blank">Dropdown 1</a>
-                        <a class="dropdown-item" target="_blank">Dropdown 2</a>
-                        <a class="dropdown-item" target="_blank">Dropdown 3</a>
-                    </div> 
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+            <b-collapse id="nav-collapse" is-nav>
+                <!-- Right aligned nav items -->
+                <b-navbar-nav class="ml-auto navbar-item-group">
+                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-home"></i>&nbsp; Home</b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-id-card"></i>&nbsp; About</b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-project-diagram"></i>&nbsp; Projects</b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-envelope"></i>&nbsp; Contact</b-nav-item>
+                </b-navbar-nav>
+            </b-collapse>
+
+        </b-navbar>
+    </div>
 </template>
 
 <style>
@@ -74,6 +66,19 @@ position: relative;
 /*add padding*/
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
+
+.navbar-inner {
+    background:transparent;
+}
+
+.navbar-items {
+    font-size: 14px;
+    margin-right: 3em;
+}
+
+.navbar-item-group {
+    margin-right: 5em;
+}
 </style>
 
 
@@ -81,7 +86,17 @@ position: relative;
 export default {
     data(){
         return{
-            bgc: {backgroundColor: '#192841'}
+            bgc: {backgroundColor: '#192841'},
+            mainProps: {
+                // center: true,
+                // fluidGrow: true,
+                // blank: true,
+                // blankColor: '#bbb',
+                width: 30,
+                height: 30,
+                // class: 'navbar-inner'
+                // class: 'my-5'
+            }
         }
     },
 
