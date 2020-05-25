@@ -9,6 +9,7 @@
         <navbar-component></navbar-component> -->
         <navbar-component></navbar-component>
         <router-view></router-view>
+        <footer-component></footer-component>
     </div>
 </template>
 <script>

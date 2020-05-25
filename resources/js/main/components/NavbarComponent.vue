@@ -1,19 +1,20 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" class="navbar-inner" fixed="top">
-            <!-- <b-navbar-brand href="#">
-                <b-img-lazy v-bind="mainProps" left src="/assets/logo_v3.png" alt="Left image"></b-img-lazy>
-            </b-navbar-brand> -->
+            <b-navbar-brand href="#">
+                <b-img-lazy v-bind="mainProps" left src="/assets/logo_v4.png" alt="Left image"></b-img-lazy>
+            </b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto navbar-item-group">
-                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-home"></i>&nbsp; Home</b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-id-card"></i>&nbsp; About</b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-project-diagram"></i>&nbsp; Projects</b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><i class="fas fa-envelope"></i>&nbsp; Contact</b-nav-item>
+                    
+                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-home"></i>&nbsp;Home</router-link></b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-id-card"></i>&nbsp; About</router-link></b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-project-diagram"></i>&nbsp; Projects</router-link></b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-envelope"></i>&nbsp; Contact</router-link></b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
 
@@ -26,8 +27,11 @@
     cursor:pointer;
 }
 
+
+
 .text-item-color{
     color: #ffffff !important;
+    opacity: 70%;
 }
 
 .navbar-background{
@@ -69,6 +73,8 @@ position: relative;
 
 .navbar-inner {
     background:transparent;
+    /* background: #4b4276; */
+    /* background: rgb(72, 36, 134); */
 }
 
 .navbar-items {
@@ -92,8 +98,8 @@ export default {
                 // fluidGrow: true,
                 // blank: true,
                 // blankColor: '#bbb',
-                width: 30,
-                height: 30,
+                width: 60,
+                height: 60,
                 // class: 'navbar-inner'
                 // class: 'my-5'
             }
