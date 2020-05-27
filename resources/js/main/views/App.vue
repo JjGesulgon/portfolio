@@ -7,14 +7,25 @@
 
         <!-- <sidebar-component></sidebar-component>
         <navbar-component></navbar-component> -->
-        <navbar-component></navbar-component>
+        <navbar-component v-if="isDisable == false"></navbar-component>
         <router-view></router-view>
         <footer-component></footer-component>
     </div>
 </template>
 <script>
 export default {
-    
+    data(){
+        return {
+            isDisable: false,
+        };
+    },
+    created(){
+        if ( this.$route.path == "/about"){
+            this.isDisable = true
+        } else{
+            this.isDisable = false
+        }
+    },
 }
 </script>
 <style>

@@ -16,9 +16,6 @@
 }
 </script>
 <style scoped>
-    .b-row{
-        margin: 0px !important;
-    }
     .full-screen-display{
         /* position:fixed; */
         height: 100vh;
@@ -39,14 +36,6 @@
         padding-right: 0px;
 
         margin-right: 0px;
-    }
-
-    .display-flex{
-         display: flex;
-    }
-
-    .navi-item{
-        margin-right: 210px !important;
     }
 
     .introduction{
@@ -93,47 +82,11 @@
         font-style: oblique;
         opacity: 70%;
     }
-    .header{
-        /* padding-top: 5px !important;
-        padding-bottom: 5px !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important; */
-        background: #fff;
-        color: #717171;
-        border-bottom: 1px solid #e0e4e8;
-    }
-
-    .info{
-        /* margin: 20px; */
-        color: #717171;
-        line-height: 25px;
-    }
 
     .main_content{
         width: auto;
-        /* margin-left: 200px; */
         background-color: #101010;
-    }
-
-    .main_content .header{
-        /* padding: 20px; */
-        background: #fff;
-        color: #717171;
-        border-bottom: 1px solid #e0e4e8;
-    }
-
-    .main_content .info{
-        /* margin-left: 40px;
-        margin-right: 40px;
-        margin-top: 20px; */
         color: #717171;
         line-height: 25px;
     }
-
-    .main_content .info div{
-        margin-bottom: 20px;
-    }
-
-
-
 </style>

@@ -12,7 +12,7 @@
                 <b-navbar-nav class="ml-auto navbar-item-group">
                     
                     <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-home"></i>&nbsp;Home</router-link></b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-id-card"></i>&nbsp; About</router-link></b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><router-link to="/about" class="text-item-color"><i class="fas fa-id-card"></i>&nbsp; About</router-link></b-nav-item>
                     <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-project-diagram"></i>&nbsp; Projects</router-link></b-nav-item>
                     <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-envelope"></i>&nbsp; Contact</router-link></b-nav-item>
                 </b-navbar-nav>
@@ -98,21 +98,14 @@ export default {
                 // fluidGrow: true,
                 // blank: true,
                 // blankColor: '#bbb',
-                width: 60,
-                height: 60,
+                // width: 60,
+                // height: 60,
+                width: 30,
+                height: 30,
                 // class: 'navbar-inner'
                 // class: 'my-5'
             }
         }
     },
-
-    // mounted(){
-    //      let promise = new Promise((resolve, reject) => {
-    //             axios.get('/api/theme/get-theme').then(res => {
-    //                 this.bgc.backgroundColor = res.data.theme.navbar_color
-    //                 resolve();
-    //             });
-    //         });
-    // }
 }
 </script>
