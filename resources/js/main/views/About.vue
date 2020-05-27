@@ -1,29 +1,9 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" class="navbar-inner" fixed="top">
-            <b-navbar-brand href="#">
-                <b-img-lazy v-bind="mainProps" left src="/assets/logo_v4.png" alt="Left image"></b-img-lazy>
-            </b-navbar-brand>
-
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-            <b-collapse id="nav-collapse" is-nav>
-                <!-- Right aligned nav items -->
-                <b-navbar-nav class="ml-auto navbar-item-group">
-                    
-                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-home"></i>&nbsp;Home</router-link></b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><router-link to="/about" class="text-item-color"><i class="fas fa-id-card"></i>&nbsp; About</router-link></b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-project-diagram"></i>&nbsp; Projects</router-link></b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-envelope"></i>&nbsp; Contact</router-link></b-nav-item>
-                </b-navbar-nav>
-            </b-collapse>
-
-        </b-navbar>
-
         <div class="main_content full-screen-display">
-            <b-container class="bv-example-row" v-if="ifReady == true">
+            <b-container class="bv-example-row mb-5" v-if="ifReady == true">
                 <b-row>
-                    <b-col>
+                    <b-col sm="4">
                         <b-card
                             title="Jj Gesulgon"
                             img-src="/assets/jj_picture.jpg"
@@ -31,34 +11,38 @@
                             img-top
                             tag="article"
                             style="max-width: 20rem;"
-                            class="mb-2 text-center"
+                            class="mb-2 text-center card-layout"
                         >
-                            <b-card-text class="mt-3">
-                                <div>
-                                    <i class="fas fa-code"></i>&nbsp; Fullstack Web Developer
-                                </div>
-                                <div>
-                                    <i class="fas fa-map-marker-alt"></i>&nbsp; Bacolod City, Philippines
-                                </div>
-                                <div>
-                                    <i class="fas fa-envelope"></i>&nbsp; jjgesulgon@gmail.com
-                                </div>
+                            <b-card-text class="ml-4 mt-3">
+                                <b-row class="justify-content-start">
+                                    <b-col col lg="2"><i class="fas fa-code"></i></b-col>
+                                    <b-col cols="12" md="auto">Fullstack Web Developer</b-col>
+                                </b-row>
+                                <b-row class="justify-content-start">
+                                    <b-col col lg="2"><i class="fas fa-map-marker-alt"></i></b-col>
+                                    <b-col cols="12" md="auto">Bacolod City, Philippines</b-col>
+                                </b-row>
+                                <b-row class="justify-content-start">
+                                    <b-col col lg="2"><i class="fas fa-envelope"></i></b-col>
+                                    <b-col cols="12" md="auto">jjgesulgon@gmail.com</b-col>
+                                </b-row>
                             </b-card-text>
                         </b-card>
                     </b-col>
                     <!-- <div class="w-100"></div> -->
-                    <b-col>
+                    <b-col sm="8">
                         <p class="text-center" v-if="!hasAbout"> No About Yet</p>
                         <br>
                         <div class="body" v-html="about.body"></div>
                     </b-col>
                 </b-row>
             </b-container>
-            <div v-if="ifReady == false">
+            <div v-if="ifReady == false" class="mb-5">
                 <div class="d-flex justify-content-center mb-3">
                     <b-spinner label="Loading..."></b-spinner>
                 </div>
             </div>
+            <experience-component></experience-component>
         </div>
     </div>
 </template>
@@ -100,69 +84,21 @@
 </script>
 <style scoped>
 /* //////////////////////////////////////////////////// */
-/* NavBar */
+/* Card */
 /* //////////////////////////////////////////////////// */
-    .hover-pointer:hover{
-        cursor:pointer;
+    .card-layout{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-    .text-item-color{
-        color: #ffffff !important;
-        opacity: 70%;
+    @media (max-width: 450px) {
+        .card-layout{
+            margin: 0 auto;
+            display: none !important;
+        }
+        .main_content{
+            margin-top: 5em !important;
+        }
     }
-
-    .navbar-background{
-        background-color:#d8f3fc;
-        border: none;
-    }
-
-    .search-textbox{
-        border: 1px solid #010071;
-        background:transparent;
-        border-radius: 0px !important;
-    }
-
-    .navi-link {
-    display: block;
-    /* color: #007bff; */
-    color: #ffffff !important;
-    }
-
-    /* enable absolute positioning */
-    .inner-addon { 
-    position: relative; 
-    }
-
-    /*style icon */
-    .inner-addon .fa{
-    position: absolute;
-    padding: 10px;
-    pointer-events: none;
-    }
-
-    /*align icon */
-    .left-addon .fa  { left:  0px;}
-    .right-addon .fa { right: 0px;}
-
-    /*add padding*/
-    .left-addon input  { padding-left:  30px; }
-    .right-addon input { padding-right: 30px; }
-
-    .navbar-inner {
-        background:#101010;
-        /* background: #4b4276; */
-        /* background: rgb(72, 36, 134); */
-    }
-
-    .navbar-items {
-        font-size: 14px;
-        margin-right: 3em;
-    }
-
-    .navbar-item-group {
-        margin-right: 5em;
-    }
-
 /* //////////////////////////////////////////////////// */
 /* Page CSS */
 /* //////////////////////////////////////////////////// */
@@ -239,6 +175,6 @@
         background-color: #f8f4f4;
         color: #717171;
         line-height: 25px;
-        margin-top: 10em !important;
+        margin-top: 10em;
     }
 </style>

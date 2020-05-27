@@ -35,7 +35,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('navbar-component', require('./components/NavbarComponent.vue'));
+Vue.component('secondary-navbar-component', require('./components/SecondaryNavbarComponent.vue'));
 Vue.component('footer-component', require('./components/FooterComponent.vue'));
+Vue.component('experience-component', require('./components/ExperienceComponent.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

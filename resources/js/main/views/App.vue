@@ -7,8 +7,12 @@
 
         <!-- <sidebar-component></sidebar-component>
         <navbar-component></navbar-component> -->
-        <navbar-component v-if="isDisable == false"></navbar-component>
-        <router-view></router-view>
+        <navbar-component v-if="isDisable == true"></navbar-component>
+        <secondary-navbar-component v-if="isDisable == false"></secondary-navbar-component>
+        <transition name="fade" mode="out-in">
+            <router-view/>
+        </transition>
+        <!-- <router-view></router-view> -->
         <footer-component></footer-component>
     </div>
 </template>
@@ -29,6 +33,22 @@ export default {
 }
 </script>
 <style>
+/* /////////////////////////////////////////////////// */
+/* Transition */
+/* /////////////////////////////////////////////////// */
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
+
 @media (min-width: 800px) and (max-width: 850px) {
             .navbar-style:not(.top-nav-collapse) {
                 background: #1C2331!important;
