@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','portfolio.
         // 'intro'           => 'IntroController',
         'about'           => 'AboutController',
         // 'experience'      => 'ExperienceController',
-        // 'skills'          => 'SkillsController',
+        'skills'          => 'SkillsController',
         // 'projects'        => 'ProjectsController',
     ]);
 });

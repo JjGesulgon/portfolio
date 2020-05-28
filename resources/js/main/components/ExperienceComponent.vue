@@ -2,14 +2,14 @@
     <div class="experience-box">
         <b-container fluid class="p-4 text-center">
             <b-row class="experience-box-content">
-                <b-col>
-                    <b-img-lazy class="text-center" src="/assets/hybrain_inverted_logo.png" alt="image"></b-img-lazy>
+                <b-col sm class="mb-5">
+                    <b-img-lazy class="text-center" src="/assets/aardvark_logo.png" alt="image" height="50" width="150"></b-img-lazy>
                 </b-col>
-                <b-col>
-                    <b-img-lazy class="text-center" src="/assets/hybrain_inverted_logo.png" alt="image"></b-img-lazy>
+                <b-col sm class="mb-5">
+                    <b-img-lazy class="text-center" src="/assets/tastradesoft_logo.png" alt="image" height="50" width="150"></b-img-lazy>
                 </b-col>
-                <b-col>
-                    <b-img-lazy class="text-center" src="/assets/hybrain_inverted_logo.png" alt="image"></b-img-lazy>
+                <b-col sm class="mb-5">
+                    <b-img-lazy class="text-center" src="/assets/hybrain_inverted_logo.png" alt="image" height="50" width="50"></b-img-lazy>
                 </b-col>
             </b-row>
         </b-container>

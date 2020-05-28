@@ -4,6 +4,9 @@
             <b-container class="bv-example-row mb-5" v-if="ifReady == true">
                 <b-row>
                     <b-col sm="4">
+                        <!-- img-src="/assets/jj_picture.jpg"
+                            img-alt="Image"
+                            img-top -->
                         <b-card
                             title="Jj Gesulgon"
                             img-src="/assets/jj_picture.jpg"
@@ -43,6 +46,7 @@
                 </div>
             </div>
             <experience-component></experience-component>
+            <tech-stack-component></tech-stack-component>
         </div>
     </div>
 </template>
@@ -98,6 +102,10 @@
         .main_content{
             margin-top: 5em !important;
         }
+    }
+
+    .image-cutout{
+        -webkit-clip-path: polygon(0 0, 0 100px, 100px 80px, 100px 0);
     }
 /* //////////////////////////////////////////////////// */
 /* Page CSS */
