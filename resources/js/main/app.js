@@ -39,6 +39,7 @@ Vue.component('secondary-navbar-component', require('./components/SecondaryNavba
 Vue.component('footer-component', require('./components/FooterComponent.vue'));
 Vue.component('experience-component', require('./components/ExperienceComponent.vue'));
 Vue.component('tech-stack-component', require('./components/TechStackComponent.vue'));
+Vue.component('history-component', require('./components/HistoryComponent.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

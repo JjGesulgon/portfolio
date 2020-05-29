@@ -36,13 +36,14 @@
         <div class="tech-stack-box2">
             <b-container fluid class="p-4 text-center tech-stack-design2">
                 <b-row class="tech-stack-content2">
-                    <b-col class="tech-title">
+                    <b-col class="tech-icon">
                         <!-- <h2 class="text-right tech-stack-title">Technology Stack & Experience.</h2> -->
                         <!-- <h2 class="tech-title">Technology Stack & Skills.</h2> -->
+                        <!-- <h2 class="text-left tech-stack-title">Workflow & Processes</h2> -->
                     </b-col>
-                    <b-col class="tech-icon">
+                    <b-col class="tech-title">
                         <div class="text-center">
-                            <h2 class="text-left tech-stack-title">Workflow & Processes</h2>
+                            <h2 class="text-left tech-stack-title2">Project Workflow & Processes</h2>
                         </div>
                     </b-col>
                 </b-row>
@@ -71,6 +72,9 @@
                         </p>
                     </b-col>
                 </b-row>
+                <div class="text-left mb-5 tech-cog-icon2">
+                    <i class="fas fa-cog fa-spin icon-style"></i>
+                </div>
             </b-container>
         </div>
     </div>
@@ -91,13 +95,47 @@
             margin-left: 0 !important;
         }
         .tech-skill-content{
+            margin-top: 3em !important;
+            margin-right: 0 !important;
+            margin-bottom: 1em !important;
+        }
+
+        .tech-stack-content-paragraph2{
+            color: #101010;
+            text-align: left;
             margin-right: 0 !important;
         }
+
+        .tech-skill-content2{
+            margin-top: -2em !important;
+            margin-left: 0 !important;
+            margin-bottom: 3em;
+        }
+
+        .tech-stack-box{
+            background-color: #dbdbdb;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%) !important;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%) !important;
+        }
+
+        .tech-stack-design{
+            padding-bottom: 10em !important;
+            margin-bottom: 10em !important;
+        }
+    }
+    .tech-cog-icon2{
+        margin-left: 16em;
     }
 
     .tech-stack-design{
+        /* padding-bottom: 15em !important; */
         padding-bottom: 15em !important;
     }
+
     .tech-stack-design2{
         padding-bottom: 0 !important;
         /* transform: skewY(10deg); */
@@ -118,39 +156,34 @@
         height: 100%;
         background-color: transparent;
     }
-
-    /* .tech-stack-box2::after{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        content: '';
-        background:inherit;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        transform-origin: top left;
-        transform: skewY(-10deg);
-    } */
     
     .tech-stack-title{
         color: #101010;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+
+    .tech-stack-title2{
+        color: #101010;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
     .tech-stack-content{
         margin-top: 5em;
         margin-bottom: 5em;
     }
+
     .tech-stack-content2{
         margin-top: -10em !important;
         /* margin: 5em; */
         margin-bottom: 5em;
     }
+
     .tech-stack-content-paragraph{
         color: #101010;
         text-align: left;
         margin-left: 20em;
     }
+    
     .tech-stack-content-paragraph2{
         color: #101010;
         text-align: left;
@@ -162,7 +195,7 @@
     }
 
     .tech-skill-content2{
-        margin-left: 30em;
+        margin-left: 25em;
     }
 
     .icon-style{

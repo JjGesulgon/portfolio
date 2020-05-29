@@ -55,6 +55,7 @@
             </div> -->
             <experience-component></experience-component>
             <tech-stack-component></tech-stack-component>
+            <history-component></history-component>
         </div>
     </div>
 </template>
