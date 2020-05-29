@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="main_content full-screen-display">
-            <b-container class="bv-example-row mb-5" v-if="ifReady == true">
+            <!-- v-if="ifReady == true" -->
+            <b-container class="bv-example-row mb-5">
                 <b-row>
                     <b-col sm="4">
                         <!-- img-src="/assets/jj_picture.jpg"
@@ -34,17 +35,24 @@
                     </b-col>
                     <!-- <div class="w-100"></div> -->
                     <b-col sm="8">
-                        <p class="text-center" v-if="!hasAbout"> No About Yet</p>
-                        <br>
-                        <div class="body" v-html="about.body"></div>
+                        <div v-if="ifReady == false" class="mb-5">
+                            <div class="d-flex justify-content-center about-content">
+                                <b-spinner label="Loading..."></b-spinner>
+                            </div>
+                        </div>
+                        <div v-if="ifReady == true">
+                            <p class="text-center" v-if="!hasAbout"> No About Yet</p>
+                            <br>
+                            <div class="body" v-html="about.body"></div>
+                        </div>
                     </b-col>
                 </b-row>
             </b-container>
-            <div v-if="ifReady == false" class="mb-5">
+            <!-- <div v-if="ifReady == false" class="mb-5">
                 <div class="d-flex justify-content-center mb-3">
                     <b-spinner label="Loading..."></b-spinner>
                 </div>
-            </div>
+            </div> -->
             <experience-component></experience-component>
             <tech-stack-component></tech-stack-component>
         </div>
@@ -183,6 +191,10 @@
         background-color: #f8f4f4;
         color: #717171;
         line-height: 25px;
-        margin-top: 10em;
+        padding-top: 10em;
+    }
+
+    .about-content{
+        margin-top:14em;
     }
 </style>
