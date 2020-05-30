@@ -80,11 +80,19 @@
     </div>
 </template>
 <style scoped>
-    @media (max-width: 1024px) {
-        .tech-icon{
-            margin: 0 auto;
-            display: none !important;
+    @media (min-width: 360px) and (max-width: 766px) {
+        .tech-stack-title{
+            color: #101010;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: left !important;
         }
+        .tech-stack-title2{
+            color: #101010;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: left !important;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
         .tech-stack-title{
             color: #101010;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -95,6 +103,22 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-align: right !important;
         }
+    }
+    @media (max-width: 1024px) {
+        .tech-icon{
+            margin: 0 auto;
+            display: none !important;
+        }
+        /* .tech-stack-title{
+            color: #101010;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: left !important;
+        }
+        .tech-stack-title2{
+            color: #101010;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: right !important;
+        } */
         .tech-stack-content-paragraph{
             text-align: left;
             margin-left: 0 !important;

@@ -1,10 +1,10 @@
 <template>
     <div class="history-box">
         <b-container fluid class="p-4 text-center history-box-container">
-            <h3 class="history-box-title">My History.</h3>
-            <p class="history-box-content">I started as a game developer back in 2015. Started a game studio after graduating college but then left the game industry 
+            <h3 class="history-box-title">A Little History.</h3>
+            <p class="history-box-content">I started as a game developer back in 2015 and opened a game studio after graduating college. I left the game industry 
                 after a year and a half because things were not going well financially. I eventually ended up building business applications
-                with C# and MSSQL in 2016, then finally found my passion for web development with Laravel and Vue.js short after. And as technology
+                with C# and MSSQL in 2016, then finally found my passion for web development with Laravel and Vue.js shortly after. And as technology
                 is continually changing, we'll see what comes next.
             </p>
 
