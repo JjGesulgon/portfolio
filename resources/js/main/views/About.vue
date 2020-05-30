@@ -113,6 +113,16 @@
         }
     }
 
+    @media (max-width: 766px){
+        .main_content{
+            width: auto;
+            background-color: #f8f4f4;
+            color: #717171;
+            line-height: 25px;
+            padding-top: 3em !important;
+        }
+    }
+
     .image-cutout{
         -webkit-clip-path: polygon(0 0, 0 100px, 100px 80px, 100px 0);
     }

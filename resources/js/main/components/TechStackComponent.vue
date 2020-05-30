@@ -41,7 +41,7 @@
                         <!-- <h2 class="tech-title">Technology Stack & Skills.</h2> -->
                         <!-- <h2 class="text-left tech-stack-title">Workflow & Processes</h2> -->
                     </b-col>
-                    <b-col class="tech-title">
+                    <b-col class="tech-title2">
                         <div class="text-center">
                             <h2 class="text-left tech-stack-title2">Project Workflow & Processes</h2>
                         </div>
@@ -89,6 +89,11 @@
             color: #101010;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-align: left !important;
+        }
+        .tech-stack-title2{
+            color: #101010;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: right !important;
         }
         .tech-stack-content-paragraph{
             text-align: left;

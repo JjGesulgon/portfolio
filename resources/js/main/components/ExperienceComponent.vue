@@ -20,8 +20,8 @@
         background-color: #101010;
     }
     .experience-box-content{
-        margin-top: 10em;
-        margin-bottom: 10em;
+        margin-top: 6em;
+        margin-bottom: 6em;
     }
 </style>
 <script>
