@@ -56,6 +56,7 @@
             <experience-component></experience-component>
             <tech-stack-component></tech-stack-component>
             <history-component></history-component>
+            <footer-component></footer-component>
         </div>
     </div>
 </template>
@@ -203,6 +204,7 @@
         color: #717171;
         line-height: 25px;
         padding-top: 10em;
+        position: relative;
     }
 
     .about-content{

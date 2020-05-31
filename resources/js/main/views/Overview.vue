@@ -4,10 +4,11 @@
             <div class="container text-center main-introduction">
                 <h1 class="lettering-first">Hi,</h1>
                 <h1 class="lettering-second">I'm Jj Gesulgon</h1>
-                <h1 class="lettering-third">Fullstack Web Developer</h1>
+                <h1 class="lettering-third">Fullstack Web Developer | Software Engineer</h1>
                 <b-button squared variant="outline-light mt-5" class="contact-button">Contact Me</b-button>
             </div>
         </div>
+        <footer-component style="position:fixed !important;"></footer-component>
     </div>
 </template>
 <script>
@@ -88,5 +89,6 @@
         background-color: #101010;
         color: #717171;
         line-height: 25px;
+        /* position: relative; */
     }
 </style>

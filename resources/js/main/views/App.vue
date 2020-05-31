@@ -12,8 +12,7 @@
         <transition name="fade" mode="out-in">
             <router-view/>
         </transition>
-        <!-- <router-view></router-view> -->
-        <footer-component></footer-component>
+        <!-- <footer-component v-if="isDisable != false"></footer-component> -->
     </div>
 </template>
 <script>
@@ -21,6 +20,7 @@ export default {
     data(){
         return {
             isDisable: false,
+            footerOn: true
         };
     },
     created(){

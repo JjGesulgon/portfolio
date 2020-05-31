@@ -49,7 +49,8 @@
                 </b-row>
                 <b-row class="tech-stack-content">
                     <b-col sm>
-                        <div class="text-center tech-skill-content2" v-if="ifReady == true">
+                        <!-- v-if="ifReady == true" -->
+                        <div class="text-center tech-skill-content2">
                             <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Agile</b-button>
                             <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Scrum</b-button>
                             <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">PWA</b-button>
@@ -59,11 +60,12 @@
                             <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Automation</b-button>
                             <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Code Review</b-button>
                         </div>
-                        <div v-if="ifReady == false" class="mb-5">
+                        <!-- v-if="ifReady == false" -->
+                        <!-- <div class="mb-5">
                             <div class="d-flex justify-content-center mb-3">
                                 <b-spinner label="Loading..."></b-spinner>
                             </div>
-                        </div>
+                        </div> -->
                     </b-col>
                     <b-col sm>
                         <p class="tech-stack-content-paragraph2">I like to work agile and in cross-functional teams and got experience from previous projects.
