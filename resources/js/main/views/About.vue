@@ -81,7 +81,7 @@
                 }
             };
         },
-        mounted() {
+        created() {
             let promise = new Promise((resolve, reject) => {
                 axios.get('/api/about').then(res => {
                     console.log(res);
