@@ -23,6 +23,10 @@
                                     <input type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255">
                                 </div>
                                 <div class="form-group">
+                                    <label>Image (optional)</label>
+                                    <input type="file" class="form-control-file" @change="onFileSelected">
+                                </div>
+                                <div class="form-group">
                                     <label><strong>Description</strong></label>
                                     <tinymce-component
                                         v-model="description"
@@ -78,6 +82,7 @@
                 ifReady: false,
                 id: '',
                 name: '',
+                image: '',
                 description: '',
                 role: '',
                 live_link: '',
@@ -92,6 +97,7 @@
                     console.log()
                     this.id    = res.data.project.id;
                     this.name  = res.data.project.name;
+                    this.image = res.data.project.image;
                     this.description = res.data.project.description;
                     this.role = res.data.project.role;
                     this.live_link = res.data.project.live_link;
@@ -106,6 +112,10 @@
         },
 
         methods: {
+            onFileSelected(event) {
+                this.image = event.target.files[0];
+            },
+
             viewProject() {
                 this.$router.push({
                     name: 'projects.index'
@@ -117,6 +127,7 @@
                 let formData = new FormData();
                 formData.append('_method','PATCH');
                 formData.append('name', this.name);
+                formData.append('image', this.image);
                 formData.append('description', this.description);
                 formData.append('role', this.role);
                 formData.append('live_link', this.live_link);

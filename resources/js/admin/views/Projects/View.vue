@@ -18,6 +18,9 @@
                     <div class="card-body header-margin">
                         <div v-if="ifReady">
                             <fieldset disabled>
+                                <div class="form-group text-center">
+                                    <img style="height:30em;" :src="'/storage/images/' + projects.image" alt=""> 
+                                </div>
                                 <div class="form-group">
                                     <label for="name"><strong>Name</strong></label>
                                     <input type="text" class="form-control" v-model="projects.name">
