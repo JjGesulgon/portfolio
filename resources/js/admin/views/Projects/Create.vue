@@ -23,6 +23,10 @@
                                     <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
+                                    <label>Image (optional)</label>
+                                    <input type="file" class="form-control-file" @change="onFileSelected">
+                                </div>
+                                <div class="form-group">
                                     <label>Description</label>
                                     <tinymce-component
                                         v-model="description"
@@ -87,11 +91,27 @@
         },
 
         methods: {
+            onFileSelected(event) {
+                this.image = event.target.files[0];
+            },
+
             createNewProject() {
                 this.ifReady = false;
                 this.errors = [];
 
-                axios.post('/api/projects', this.$data).then(res => {
+                let formData = new FormData();
+                formData.append('name', this.name);
+                formData.append('description', this.description);
+                formData.append('role', this.role);
+                formData.append('live_link', this.live_link);
+                formData.append('github_link', this.github_link);
+
+                if (this.image != null) {
+                    formData.append('image', this.image);
+                }
+
+                // axios.post('/api/projects', this.$data).then(res => {
+                axios.post('/api/projects', formData).then(res => {
                     this.toast('Success','Project added', 'Successfully submitted the request', 'secondary')
                     this.$router.push({ name: 'projects.index' });
                 }).catch(err => {

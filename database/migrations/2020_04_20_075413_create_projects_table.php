@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
+            $table->string('image')->nullable();
             $table->longText('description');
             $table->string('role');
             $table->string('live_link')->nullable();
