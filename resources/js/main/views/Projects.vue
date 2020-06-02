@@ -9,6 +9,16 @@
                 <p>What I've been up to.</p>
             </div>
         </div>
+        <div v-for="project in projects" v-bind:key="project.name" class="mt-5">
+            <b-container class="bv-example-row mb-5">
+                <b-row>
+                    <b-col sm>
+                        <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image"></b-img>
+                    </b-col>
+                    <b-col sm class="text-center">{{ project.name }}</b-col>
+                </b-row>
+            </b-container>
+        </div>
     </div>
 </template>
 <style scoped>
@@ -37,6 +47,25 @@
 </style>
 <script>
 export default {
-    
+    data() {
+        return {
+            ifReady: false,
+            projects: '',
+            hasProjects: false,
+        };
+    },
+    created() {
+        let promise = new Promise((resolve, reject) => {
+            axios.get('/api/projects').then(res => {
+                console.log(res.data);
+                this.projects = res.data.data;
+                // this.hasProjects = true
+                // this.ifReady = true
+                resolve();
+            }).catch(error => {
+                this.ifReady = true
+            });
+        });
+    },
 }
 </script>

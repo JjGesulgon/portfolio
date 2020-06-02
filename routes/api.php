@@ -31,7 +31,6 @@ Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.po
     ]);
 
     Route::resources([
-        'intro'           => 'IntroController',
         'about'           => 'AboutController',
         'experience'      => 'ExperienceController',
         'skills'          => 'SkillsController',
@@ -42,10 +41,9 @@ Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.po
 Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','portfolio.test')], function () {
 
     Route::resources([
-        // 'intro'           => 'IntroController',
         'about'           => 'AboutController',
         // 'experience'      => 'ExperienceController',
         'skills'          => 'SkillsController',
-        // 'projects'        => 'ProjectsController',
+        'projects'        => 'ProjectsController',
     ]);
 });
