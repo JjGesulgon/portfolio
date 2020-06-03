@@ -9,7 +9,7 @@
                 <p>What I've been up to.</p>
             </div>
         </div>
-        <div v-for="project in projects" v-bind:key="project.name" class="project-container">
+        <div v-if="ifReady == true" v-for="project in projects" v-bind:key="project.name" class="project-container">
             <div class="text-center project-title mb-3">
                 {{ project.name }}
             </div>
@@ -43,8 +43,11 @@
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="4" class="project-property-label">Live Link:</b-col>
-                                <b-col cols="8">
+                                <b-col cols="8" v-if="project.live_link != 'n/a'">
                                     <a :href="project.live_link">{{ project.live_link}}</a>
+                                </b-col>
+                                <b-col cols="8" v-else>
+                                    Under Development
                                 </b-col>
                             </b-row>
                         </div>
@@ -52,6 +55,12 @@
                 </b-row>
             </b-container>
         </div>
+        <div v-if="ifReady == false">
+            <div class="d-flex justify-content-center project-container-loading">
+                <b-spinner label="Loading..."></b-spinner>
+            </div>
+        </div>
+        <footer-component></footer-component>
     </div>
 </template>
 <style scoped>
@@ -91,13 +100,31 @@
     .project-container{
         margin-top: 5em !important;
     }
+
+    .project-container-loading{
+        margin-top: 5em !important;
+        margin-bottom: 16.5em;
+    }
+
+    @media (min-width: 768px) and (max-width: 1022px){
+        .project-container-loading{
+            margin-top: 5em !important;
+            margin-bottom: 20em;
+        }
+    }
+    @media (min-width: 1024px){
+        .project-container-loading{
+            margin-top: 5em !important;
+            margin-bottom: 41.3em;
+        }
+    }
 </style>
 <script>
 export default {
     data() {
         return {
             ifReady: false,
-            projects: '',
+            projects: null,
             hasProjects: false,
         };
     },
@@ -106,8 +133,8 @@ export default {
             axios.get('/api/projects').then(res => {
                 console.log(res.data);
                 this.projects = res.data.data;
-                // this.hasProjects = true
-                // this.ifReady = true
+                this.hasProjects = true
+                this.ifReady = true
                 resolve();
             }).catch(error => {
                 this.ifReady = true
