@@ -26,6 +26,10 @@
                                     <label>Image (optional)</label>
                                     <input type="file" class="form-control-file" @change="onFileSelected">
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label>Image (optional)</label>
+                                    <input type="file" class="form-control-file" multiple @change="onFileSelected">
+                                </div> -->
                                 <div class="form-group">
                                     <label>Description</label>
                                     <tinymce-component
@@ -86,16 +90,50 @@
                 role: '',
                 live_link: '',
                 github_link: '',
-                errors: []
+                errors: [],
+                image: '',
+                formData2: new FormData(),
             };
         },
 
         methods: {
             onFileSelected(event) {
+                // console.log(event);
                 this.image = event.target.files[0];
+                // let selectedFiles = event.target.files;
+
+                // if (!selectedFiles.length){
+                //     return false;
+                // }
+
+                // for(let i=0; i<selectedFiles.length; i++){
+                //     this.images.push(selectedFiles[i]);
+                // }
+                //this.image = event.target.files;
+
+                // if (event.target.files.length > 1) {
+                //     for (let file in event.target.files) {
+                //         console.log(event.target.files[file]);
+                //         this.formData2.append('image[]', event.target.files[file]);
+                //     }
+                // } else {
+                //     this.formData2.append('image[]', event.target.files[0]);
+                // }
             },
 
             createNewProject() {
+
+                // axios.post('/api/projectImages', this.formData2).then(res => {
+                //         this.toast('Success','Project Image added', 'Successfully submitted the request', 'secondary')
+                //         // this.$router.push({ name: 'projects.index' });
+                //     }).catch(err => {
+                //         this.errors = err.response.data.errors
+                //         this.ifReady = true;
+                //         console.log(err.response);
+                //         this.toast('Error','Failed to submit', 'Unable to process request!', 'danger')
+                //         return;
+                //     });
+
                 this.ifReady = false;
                 this.errors = [];
 

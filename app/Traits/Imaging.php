@@ -129,7 +129,7 @@ trait Imaging
      * @param  array $sizes
      * @return void
      */
-    public static function storeImage($model, $sizes = null)
+     public static function storeImage($model, $sizes = null)
     {
         if (request()->hasFile('image') || request()->hasFile('picture') || request()->hasFile('photo')) {
             self::createDirectory();

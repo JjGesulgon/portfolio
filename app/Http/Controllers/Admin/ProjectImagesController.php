@@ -3,29 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProjectResource;
-use App\Repositories\ProjectRepository;
+use App\Http\Resources\ProjectImagesResource;
+use App\Repositories\ProjectImagesRepository;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ProjectsController extends Controller
+class ProjectImagesController extends Controller
 {
     /**
      * Projects repository.
      *
-     * @var App\Repositories\ProjectRepository
+     * @var App\Repositories\ProjectImagesRepository
      */
-    protected $project;
+    protected $projectImages;
 
     /**
      * Create new instance of project controller.
      *
      * @param ProjectRepository project Project repository
      */
-    public function __construct(ProjectRepository $project)
+    public function __construct(ProjectImagesRepository $projectImages)
     {
-        $this->project = $project;
+        $this->projectImages = $projectImages;
     }
 
     /**
@@ -35,7 +35,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        if (! $data = ProjectResource::collection($this->project->paginateWithFilters(request(), request()->per_page, request()->order_by))) {
+        if (! $data = ProjectImagesResource::collection($this->projectImages->paginateWithFilters(request(), request()->per_page, request()->order_by))) {
             return response()->json([
                 'message'  => 'Failed to retrieve resource'
             ], 400);
@@ -51,13 +51,10 @@ class ProjectsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $validator = Validator::make($request->all(), [
-            'name'              => 'required|string|max:255',
-            'description'       => 'required|min:2',
-            'role'              => 'required|string|max:255',
-            'live_link'         => 'required|string|max:255',
-            'github_link'       => 'required|string|max:255',
+            'image'   => 'required|max:2000',
+            // 'image_caption' => 'required|max:1000'
         ]);
 
         if ($validator->fails()) {
@@ -66,16 +63,29 @@ class ProjectsController extends Controller
                 'errors'  => $validator->errors()
             ], 400);
         }
+        foreach ($request->image as $photo) {
+            $data = [$photo];
 
-        if (! $data = $this->project->store($request)) {
+            $validator = Validator::make($data, [
+                'photo' => 'mimes:jpeg,png,jpg|max:3000'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => 'Validation failed',
+                    'errors'  => $validator->errors()
+                ], 400);
+            }
+        }
+
+        if (! $this->projectImages->store($request)) {
             return response()->json([
                 'message' => 'Failed to store resource'
             ], 500);
         }
 
         return response()->json([
-            'message' => 'Resource successfully stored',
-            'data' => $data
+            'message' => 'Resource successfully stored'
         ], 200);
     }
 
@@ -90,11 +100,7 @@ class ProjectsController extends Controller
     {
         // return $request->all();
         $validator = Validator::make($request->all(), [
-            'name'              => 'required|string|max:255',
-            'description'       => 'required|min:2',
-            'role'              => 'required|string|max:255',
-            'live_link'         => 'required|string|max:255',
-            'github_link'       => 'required|string|max:255',
+            'project_id'              => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -104,7 +110,7 @@ class ProjectsController extends Controller
             ], 400);
         }
 
-        if (! $this->project->update($request, $id)) {
+        if (! $this->projectImages->update($request, $id)) {
             return response()->json([
                 'message' => 'Failed to update resource'
             ], 500);
@@ -123,7 +129,7 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        if (! $project = $this->project->findOrFail($id)) {
+        if (! $projectImages = $this->projectImages->findOrFail($id)) {
             return response()->json([
                 'message' => 'Resource does not exist'
             ], 400);
@@ -132,19 +138,19 @@ class ProjectsController extends Controller
         return response()->json([
             'response' => true,
             'message'  => 'Resource successfully retrieve',
-            'project'    => $project
+            'project'    => $projectImages
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Project  $project
+     * @param  \App\ProjectImages  $projectImages
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! $this->project->findOrFail($id)->delete()) {
+        if (! $this->projectImages->findOrFail($id)->delete()) {
             return response()->json([
                 'message' => 'Failed to delete resource'
             ], 400);

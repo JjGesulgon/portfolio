@@ -111,4 +111,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    /**
+     * The user has many projects_images
+     *
+     * @return array object
+     */
+    public function projectImages()
+    {
+        return $this->hasMany(ProjectImages::class);
+    }
 }
