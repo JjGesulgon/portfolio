@@ -47,4 +47,18 @@ Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','portfolio.
         'skills'          => 'SkillsController',
         'projects'        => 'ProjectsController',
     ]);
+
+    // Route::post('send-mail', 'ContactController@sendEmail');
+    Route::post('contact-us', 'ContactController@sendEmail');
+    // Route::get('send-mail', function () {
+   
+    //     $details = [
+    //         'title' => 'Mail from jjgesulgon.dev',
+    //         'body' => 'This is for testing email using smtp'
+    //     ];
+       
+    //     \Mail::to('jjgesulgon@gmail.com')->send(new \App\Mail\ContactMail($details));
+       
+    //     dd("Email is Sent.");
+    // });
 });
