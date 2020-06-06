@@ -2,11 +2,13 @@
     <div class="footer">
         <p class="footer-content">
 
-            <i class="fab fa-instagram icon-style"></i> 
+            <a href="https://twitter.com/jeysqrd" class="a-link" target="_blank"><i class="fa fa-twitter-square icon-style" aria-hidden="true"></i></a>
             &nbsp;  &nbsp;
-            <i class="fab fa-linkedin icon-style"></i>
+            <a href="https://www.instagram.com/jeysqrd/" class="a-link" target="_blank"><i class="fab fa-instagram icon-style"></i></a>
             &nbsp;  &nbsp;
-            <i class="fab fa-dev icon-style"></i>
+            <a href="https://www.linkedin.com/in/jsqrd/" class="a-link" target="_blank"><i class="fab fa-linkedin icon-style"></i></a>
+            &nbsp;  &nbsp;
+            <a href="https://dev.to/jjgesulgon" class="a-link" target="_blank"><i class="fab fa-dev icon-style"></i></a>
         </p>
     </div>
 </template>
@@ -40,4 +42,13 @@
         border-radius: 50%;
         display: inline-block;
     }
+
+    .a-link{
+        color: white;
+    }
+
+    .a-link:hover{
+        color: rgb(180, 179, 179);
+    }
+
 </style>

@@ -14,7 +14,7 @@
                     <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-home"></i>&nbsp;Home</router-link></b-nav-item>
                     <b-nav-item href="#" class="navbar-items"><router-link to="/about" class="text-item-color"><i class="fas fa-id-card"></i>&nbsp; About</router-link></b-nav-item>
                     <b-nav-item href="#" class="navbar-items"><router-link to="/projects" class="text-item-color"><i class="fas fa-project-diagram"></i>&nbsp; Projects</router-link></b-nav-item>
-                    <b-nav-item href="#" class="navbar-items"><router-link to="/" class="text-item-color"><i class="fas fa-envelope"></i>&nbsp; Contact</router-link></b-nav-item>
+                    <b-nav-item href="#" class="navbar-items"><router-link to="/contact-me" class="text-item-color"><i class="fas fa-envelope"></i>&nbsp; Contact</router-link></b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
 

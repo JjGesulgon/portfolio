@@ -5,7 +5,7 @@
                 <h1 class="lettering-first">Hi,</h1>
                 <h1 class="lettering-second">I'm Jj Gesulgon</h1>
                 <h1 class="lettering-third">Fullstack Web Developer | Software Engineer</h1>
-                <b-button squared variant="outline-light mt-5" class="contact-button">Contact Me</b-button>
+                <router-link to="/contact-me"><b-button squared variant="outline-light mt-5" class="contact-button">Contact Me</b-button></router-link>
             </div>
         </div>
         <footer-component style="position:fixed !important;"></footer-component>

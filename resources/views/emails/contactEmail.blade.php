@@ -4,7 +4,7 @@
 
 <h2>Subscriber Message</h2>
 
-{{ $body }}
+{{ $message }}
 
 {{-- <br> --}}
 

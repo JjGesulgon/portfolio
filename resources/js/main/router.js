@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 const Overview = () => import('./views/Overview');
 const About = () => import('./views/About');
 const Projects = () => import('./views/Projects');
+const Contact = () => import('./views/Contact');
 
 const router = new VueRouter({
     mode: 'history',
@@ -15,6 +16,9 @@ const router = new VueRouter({
 
         // Projects Page
         { path: '/projects', name: 'projects', component: Projects },
+
+        // Contact Page
+        { path: '/contact-me', name: 'projects', component: Contact },
     ]
 });
 
