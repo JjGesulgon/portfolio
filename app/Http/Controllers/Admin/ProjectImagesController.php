@@ -54,7 +54,7 @@ class ProjectImagesController extends Controller
     {   
         $validator = Validator::make($request->all(), [
             'image'   => 'required|max:2000',
-            // 'image_caption' => 'required|max:1000'
+            'image_caption' => 'required|max:1000'
         ]);
 
         if ($validator->fails()) {
@@ -63,20 +63,20 @@ class ProjectImagesController extends Controller
                 'errors'  => $validator->errors()
             ], 400);
         }
-        foreach ($request->image as $photo) {
-            $data = [$photo];
+        // foreach ($request->image as $photo) {
+        //     $data = [$photo];
 
-            $validator = Validator::make($data, [
-                'photo' => 'mimes:jpeg,png,jpg|max:3000'
-            ]);
+        //     $validator = Validator::make($data, [
+        //         'photo' => 'mimes:jpeg,png,jpg|max:3000'
+        //     ]);
 
-            if ($validator->fails()) {
-                return response()->json([
-                    'message' => 'Validation failed',
-                    'errors'  => $validator->errors()
-                ], 400);
-            }
-        }
+        //     if ($validator->fails()) {
+        //         return response()->json([
+        //             'message' => 'Validation failed',
+        //             'errors'  => $validator->errors()
+        //         ], 400);
+        //     }
+        // }
 
         if (! $this->projectImages->store($request)) {
             return response()->json([

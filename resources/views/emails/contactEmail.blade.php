@@ -1,23 +1,13 @@
 @component('mail::message')
-{{-- jjgesulgon.dev Contact Page
-<br> --}}
+{{-- jjgesulgon.dev Contact Page --}}
 
-<h2>Subscriber Message</h2>
+<h2>Message</h2>
 
 {{ $message }}
 
-{{-- <br> --}}
+<br>
 
-{{-- <h2>Call Information</h2>
-@component('mail::table')
-|              |                               |
-| ------------ |:-----------------------------:|
-| Name         | Gether Kestrel B. Medel       |
-| Age          | 25                            |
-| Job          | Pole Dancing                  |
-@endcomponent
-
-<h2>Call Stats</h2>
+{{-- <h2>Call Stats</h2>
 @component('mail::table')
 | Skill               | Proficiency      | Years    |
 | ------------------- |:----------------:| --------:|
@@ -31,5 +21,7 @@ View on Resume
 @endcomponent --}}
 
 Thanks,<br>
-{{ config('app.name') }}
+{{ $name }} <br>
+{{ $email }}
+{{-- {{ config('app.name') }} --}}
 @endcomponent

@@ -12,7 +12,7 @@ class ContactMail extends Mailable
     use Queueable, SerializesModels;
 
     public $request;
-    public $message;
+    public $message, $name, $email;
 
     /**
      * Create a new message instance.
@@ -22,7 +22,9 @@ class ContactMail extends Mailable
     public function __construct($request)
     {
         $this->$request = $request;
-        $this->body = $request->message;
+        $this->message = $request->message;
+        $this->name = $request->name;
+        $this->email = $request->email;
     }
 
     /**

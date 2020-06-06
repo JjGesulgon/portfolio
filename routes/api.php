@@ -49,7 +49,7 @@ Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','portfolio.
     ]);
 
     // Route::post('send-mail', 'ContactController@sendEmail');
-    Route::post('contact-us', 'ContactController@sendEmail');
+    Route::post('contact-me', 'ContactController@sendEmail');
     // Route::get('send-mail', function () {
    
     //     $details = [
