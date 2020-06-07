@@ -22,7 +22,7 @@
                     </b-col>
                     <b-col sm>
                         <div class="text-center tech-skill-content" v-if="ifReady == true">
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2" v-for="skill in skills" v-bind:key="skill.name">{{ skill.name }}</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text" v-for="skill in skills" v-bind:key="skill.name">{{ skill.name }}</b-button>
                         </div>
                         <div v-if="ifReady == false" class="mb-5">
                             <div class="d-flex justify-content-center mb-3">
@@ -51,14 +51,14 @@
                     <b-col sm>
                         <!-- v-if="ifReady == true" -->
                         <div class="text-center tech-skill-content2">
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Agile</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Scrum</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">PWA</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Remote Work</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Testing</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Continuous Integration</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Automation</b-button>
-                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2">Code Review</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Agile</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Scrum</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">PWA</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Remote Work</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Testing</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Continuous Integration</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Automation</b-button>
+                            <b-button variant="outline-dark" class="mr-2 ml-2 mb-2 button-text">Code Review</b-button>
                         </div>
                         <!-- v-if="ifReady == false" -->
                         <!-- <div class="mb-5">
@@ -82,27 +82,35 @@
     </div>
 </template>
 <style scoped>
+    div >>> p {
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+    .button-text{
+        font-family: 'Raleway', sans-serif !important;
+    }
+
     @media (min-width: 360px) and (max-width: 766px) {
         .tech-stack-title{
             color: #101010;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Raleway', sans-serif !important;
             text-align: left !important;
         }
         .tech-stack-title2{
             color: #101010;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Raleway', sans-serif !important;
             text-align: left !important;
         }
     }
     @media (min-width: 768px) and (max-width: 1024px) {
         .tech-stack-title{
             color: #101010;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Raleway', sans-serif !important;
             text-align: left !important;
         }
         .tech-stack-title2{
             color: #101010;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Raleway', sans-serif !important;
             text-align: right !important;
         }
     }
@@ -113,12 +121,12 @@
         }
         /* .tech-stack-title{
             color: #101010;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Raleway', sans-serif !important;
             text-align: left !important;
         }
         .tech-stack-title2{
             color: #101010;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Raleway', sans-serif !important;
             text-align: right !important;
         } */
         .tech-stack-content-paragraph{
@@ -190,12 +198,12 @@
     
     .tech-stack-title{
         color: #101010;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .tech-stack-title2{
         color: #101010;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .tech-stack-content{

@@ -20,12 +20,16 @@
                             <form v-on:submit.prevent="updateAbout">
                                 <div class="form-group">
                                     <label><strong>Body</strong></label>
+                                    <!-- font_formats: 'Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n; Raleway', -->
+                                    <!-- fontsize_formats: '11px 12px 13px 14px 15px 16px 18px 24px 36px 48px', -->
                                     <tinymce-component
                                         v-model="body"
                                         api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
                                         :init="{
                                             height: 500,
                                             menubar: false,
+                                            
+                                            
                                             plugins: [
                                             'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
                                             ],

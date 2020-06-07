@@ -14,7 +14,7 @@
 
     .projects-header{
         color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Raleway', sans-serif !important;
         font-size: 60px;
         font-weight: 100;
     }

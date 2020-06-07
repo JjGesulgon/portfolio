@@ -14,6 +14,9 @@
     </div>
 </template>
 <style scoped>
+    div >>> p {
+        font-family: 'Raleway', sans-serif !important;
+    }
     .history-box{
         background-color: #101010;
     }
@@ -22,6 +25,7 @@
         margin-bottom: 10em; */
         color: white;
         text-align: left;
+        font-weight: 300;
         /* margin-left: 40em;
         margin-right: 40em; */
     }
@@ -35,17 +39,20 @@
         margin-bottom: 5em;
         color: white;
         text-align: left;
+        font-weight: 300;
         /* margin-left: 40em;
         margin-right: 40em; */
     }
 
     .history-box-title{
-        font-weight: lighter;
+        /* font-weight: lighter; */
+        font-weight: 300;
         color: white;
         margin-bottom: 2em;
         text-align: left;
         /* margin-left: 25em; */
         padding-top: 2em !important;
+        font-family: 'Raleway', sans-serif !important;
     }
     @media (max-width: 1024px) {
          .history-box-container{

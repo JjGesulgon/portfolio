@@ -15,20 +15,20 @@
                             img-top
                             tag="article"
                             style="max-width: 20rem;"
-                            class="mb-2 text-center card-layout"
+                            class="mb-2 text-center card-layout property-text"
                         >
                             <b-card-text class="ml-4 mt-3">
                                 <b-row class="justify-content-start">
                                     <b-col col lg="2"><i class="fas fa-code"></i></b-col>
-                                    <b-col cols="12" md="auto">Fullstack Web Developer</b-col>
+                                    <b-col cols="12" md="auto" class="property-text">Fullstack Web Developer</b-col>
                                 </b-row>
                                 <b-row class="justify-content-start">
                                     <b-col col lg="2"><i class="fas fa-map-marker-alt"></i></b-col>
-                                    <b-col cols="12" md="auto">Bacolod City, Philippines</b-col>
+                                    <b-col cols="12" md="auto" class="property-text">Bacolod City, Philippines</b-col>
                                 </b-row>
                                 <b-row class="justify-content-start">
                                     <b-col col lg="2"><i class="fas fa-envelope"></i></b-col>
-                                    <b-col cols="12" md="auto">jjgesulgon@gmail.com</b-col>
+                                    <b-col cols="12" md="auto" class="property-text">jjgesulgon@gmail.com</b-col>
                                 </b-row>
                             </b-card-text>
                         </b-card>
@@ -43,7 +43,7 @@
                         <div v-if="ifReady == true">
                             <p class="text-center" v-if="!hasAbout"> No About Yet</p>
                             <br>
-                            <div class="body" v-html="about.body"></div>
+                            <div class="body property-text" v-html="about.body"></div>
                         </div>
                     </b-col>
                 </b-row>
@@ -100,6 +100,17 @@
 /* //////////////////////////////////////////////////// */
 /* Card */
 /* //////////////////////////////////////////////////// */
+    div >>> p {
+        font-family: 'Raleway', sans-serif !important;
+    }
+    div >>> span {
+        font-family: 'Raleway', sans-serif !important;
+    }
+    .property-text{
+        font-family: 'Raleway', sans-serif !important;
+        font-weight: 400;
+    }
+
     .card-layout{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }

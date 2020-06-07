@@ -29,6 +29,7 @@
 
     .contact-button{
         opacity: 70%;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .content-padding {
@@ -60,7 +61,8 @@
         /* font-size:4vw; */
         font-size:60px;
         color: rgb(255, 255, 255);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Raleway', sans-serif !important;
         font-weight: lighter;
         /* font-style: oblique; */
     }
@@ -69,7 +71,8 @@
         /* font-size:4vw; */
         font-size:60px;
         color: rgb(255, 255, 255);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Raleway', sans-serif !important;
         font-weight: lighter;
         /* font-style: oblique; */
     }
@@ -78,7 +81,8 @@
         /* font-size:1vw; */
         font-size:20px;
         color: rgb(255, 255, 255);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Raleway', sans-serif !important;
         font-weight: lighter;
         font-style: oblique;
         opacity: 70%;

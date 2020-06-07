@@ -17,7 +17,7 @@
                 <b-row>
                     <b-col sm>
                         <!-- <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="overlay"></b-img> -->
-                        <div class="container-image">
+                        <div class="container-image" v-b-modal.modal-center @click="viewProjectImage(project.image, project.name)">
                             <!-- <img src="img_avatar.png" alt="Avatar" class="image" style="width:100%"> -->
                             <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="image"></b-img>
                             <div class="middle">
@@ -68,6 +68,31 @@
                 </b-row>
             </b-container>
         </div>
+        <b-modal id="modal-center" size="xl" centered header-bg-variant="dark" header-text-variant="light" body-bg-variant="light" footer-bg-variant="dark" footer-text-variant="light">
+            <!-- <b-img :src="`/storage/images/${this.selectedImage}`" fluid alt="Responsive image"></b-img> -->
+            <!-- @sliding-start="onSlideStart" @sliding-end="onSlideEnd" -->
+            <!-- v-model="slide" -->
+            <b-carousel
+                id="carousel-1"
+                :interval="4000"
+                controls
+                indicators
+                background="#ababab"
+                img-width="1024"
+                img-height="480"
+                style="text-shadow: 1px 1px 2px #333;"
+                >
+                <!-- Text slides with image -->
+                <!-- text="Nulla vitae elit libero, a pharetra augue mollis interdum." -->
+                <b-carousel-slide
+                    :caption="this.caption"
+                    :img-src="`/storage/images/${this.selectedImage}`"
+                ></b-carousel-slide>
+            </b-carousel>
+            <template v-slot:modal-footer>
+                <b>{{ this.caption }}</b>
+            </template>
+        </b-modal>
         <div v-if="ifReady == false">
             <div class="d-flex justify-content-center project-container-loading">
                 <b-spinner label="Loading..."></b-spinner>
@@ -198,6 +223,8 @@ export default {
             ifReady: false,
             projects: null,
             hasProjects: false,
+            selectedImage: '',
+            caption: ''
         };
     },
     created() {
@@ -213,5 +240,11 @@ export default {
             });
         });
     },
+    methods:{
+        viewProjectImage(image, caption){
+            this.selectedImage = image;
+            this.caption = caption;
+        }
+    }
 }
 </script>
