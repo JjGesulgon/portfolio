@@ -10,43 +10,56 @@
             </div>
         </div>
         <div v-if="ifReady == true" v-for="project in projects" v-bind:key="project.name" class="project-container">
-            <div class="text-center project-title mb-3">
+            <!-- <div class="text-center project-title mb-3 project-content">
                 {{ project.name }}
-            </div>
+            </div> -->
             <b-container class="bv-example-row mb-5">
                 <b-row>
                     <b-col sm>
-                        <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image"></b-img>
+                        <!-- <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="overlay"></b-img> -->
+                        <div class="container-image">
+                            <!-- <img src="img_avatar.png" alt="Avatar" class="image" style="width:100%"> -->
+                            <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="image"></b-img>
+                            <div class="middle">
+                                <div class="text">Click to view</div>
+                            </div>
+                        </div>
                     </b-col>
                     <b-col sm>
                         <div class="mt-2">
+                             <b-row class="mb-2">
+                                <b-col cols="4" class="project-property-label">Project Name:</b-col>
+                                <b-col cols="8" class="project-content">
+                                    {{ project.name }}
+                                </b-col>
+                            </b-row>
                             <b-row>
                                 <b-col cols="4" class="project-property-label">Description:</b-col>
-                                <b-col cols="8">
-                                    <div v-html="project.description"></div>
+                                <b-col cols="8" class="project-content">
+                                    <div class="project-content" v-html="project.description"></div>
                                 </b-col>
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="4" class="project-property-label">Role:</b-col>
-                                <b-col cols="8">
+                                <b-col cols="8" class="project-content">
                                     {{ project.role}}
                                 </b-col>
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="4" class="project-property-label">Repository Link:</b-col>
-                                <b-col cols="8" v-if="project.github_link != 'n/a'">
-                                    <a :href="project.github_link">{{ project.github_link}}</a>
+                                <b-col cols="8" class="project-content" v-if="project.github_link != 'n/a'">
+                                    <a :href="project.github_link" class="project-content">{{ project.github_link}}</a>
                                 </b-col>
-                                <b-col cols="8" v-else>
+                                <b-col cols="8" class="project-content" v-else>
                                     Unavailable due to company policy.
                                 </b-col>
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="4" class="project-property-label">Live Link:</b-col>
-                                <b-col cols="8" v-if="project.live_link != 'n/a'">
-                                    <a :href="project.live_link">{{ project.live_link}}</a>
+                                <b-col cols="8" class="project-content" v-if="project.live_link != 'n/a'">
+                                    <a :href="project.live_link" class="project-content">{{ project.live_link}}</a>
                                 </b-col>
-                                <b-col cols="8" v-else>
+                                <b-col cols="8" class="project-content" v-else>
                                     Under Development
                                 </b-col>
                             </b-row>
@@ -64,6 +77,7 @@
     </div>
 </template>
 <style scoped>
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap'); */
     .main-content{
         padding-top: 10em;
     }
@@ -76,7 +90,8 @@
         height: 80px;
     }
     .projects-text-content{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Raleway', sans-serif !important;
         font-size: 30px;
         font-weight: 100;
         color: #4b4848;
@@ -93,8 +108,13 @@
     }
 
     .project-property-label{
-        font-weight: bold;
+        font-weight: bold !important;
         text-align: right;
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+    .project-content{
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .project-container{
@@ -118,6 +138,58 @@
             margin-bottom: 41.3em;
         }
     }
+
+/* /////////////////////////////////////////////////// */
+/* overlay */
+/* /////////////////////////////////////////////////// */
+
+div >>> p {
+    font-family: 'Raleway', sans-serif !important;
+  }
+
+.container-image {
+  position: relative;
+  /* width: 50%; */
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  /* width: 100%; */
+  /* height: auto; */
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container-image:hover .image {
+  opacity: 0.3;
+}
+
+.container-image:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  /* background-color: #4CAF50; */
+  color: #101010;
+  font-size: 25px;
+  font-weight: 300 !important;
+  padding: 16px 32px;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+
 </style>
 <script>
 export default {

@@ -22,14 +22,14 @@
                                     <label>Name</label>
                                     <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Image (optional)</label>
-                                    <input type="file" class="form-control-file" @change="onFileSelected">
-                                </div>
                                 <!-- <div class="form-group">
                                     <label>Image (optional)</label>
-                                    <input type="file" class="form-control-file" multiple @change="onFileSelected">
+                                    <input type="file" class="form-control-file" @change="onFileSelected">
                                 </div> -->
+                                <div class="form-group">
+                                    <label>Image (optional)</label>
+                                    <input type="file" class="form-control-file" multiple @change="onFileSelected">
+                                </div>
                                 <div class="form-group">
                                     <label>Description</label>
                                     <tinymce-component
@@ -60,7 +60,7 @@
                                     <input id="github_link" type="text" class="form-control" v-model="github_link" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div v-if="errors != []">
-                                    <div class="alert alert-danger" v-for="error in errors">
+                                    <div class="alert alert-danger" v-for="error in errors" v-bind:key="error">
                                         <a href="#" class="close" data-dismiss="alert">&times;</a>
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
@@ -92,6 +92,7 @@
                 github_link: '',
                 errors: [],
                 image: '',
+                images:[],
                 formData2: new FormData(),
             };
         },
@@ -100,6 +101,7 @@
             onFileSelected(event) {
                 // console.log(event);
                 this.image = event.target.files[0];
+
                 // let selectedFiles = event.target.files;
 
                 // if (!selectedFiles.length){
@@ -107,17 +109,19 @@
                 // }
 
                 // for(let i=0; i<selectedFiles.length; i++){
-                //     this.images.push(selectedFiles[i]);
+                //     var encodedData = window.btoa(selectedFiles[i]);
+                //     this.images.push(encodedData);
                 // }
-                //this.image = event.target.files;
+                // console.log(this.images)
+                // //this.image = event.target.files;
 
-                // if (event.target.files.length > 1) {
-                //     for (let file in event.target.files) {
-                //         console.log(event.target.files[file]);
-                //         this.formData2.append('image[]', event.target.files[file]);
+                // if (this.images.length > 1) {
+                //     for (let file in this.images) {
+                //         console.log(this.images[file]);
+                //         this.formData2.append('image[]', this.images[file]);
                 //     }
                 // } else {
-                //     this.formData2.append('image[]', event.target.files[0]);
+                //     this.formData2.append('image[]', this.images[0]);
                 // }
             },
 

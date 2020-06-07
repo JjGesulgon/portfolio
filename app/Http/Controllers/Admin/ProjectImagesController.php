@@ -54,7 +54,7 @@ class ProjectImagesController extends Controller
     {   
         $validator = Validator::make($request->all(), [
             'image'   => 'required|max:2000',
-            'image_caption' => 'required|max:1000'
+            // 'image_caption' => 'required|max:1000'
         ]);
 
         if ($validator->fails()) {
