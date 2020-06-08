@@ -35,8 +35,10 @@ Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.po
         'experience'      => 'ExperienceController',
         'skills'          => 'SkillsController',
         'projects'        => 'ProjectsController',
-        'projectImages'        => 'ProjectImagesController',
+        'projectImages'   => 'ProjectImagesController',
     ]);
+
+    Route::get('list-projects', 'ProjectsController@projectList');
 });
 
 Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','portfolio.test')], function () {

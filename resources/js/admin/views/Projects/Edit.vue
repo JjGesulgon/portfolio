@@ -122,6 +122,17 @@
                 });
             },
             updateProject() {
+                // axios.post('/api/projectImages', this.formData2).then(res => {
+                    //         this.toast('Success','Project Image added', 'Successfully submitted the request', 'secondary')
+                    //         // this.$router.push({ name: 'projects.index' });
+                    //     }).catch(err => {
+                    //         this.errors = err.response.data.errors
+                    //         this.ifReady = true;
+                    //         console.log(err.response);
+                    //         this.toast('Error','Failed to submit', 'Unable to process request!', 'danger')
+                    //         return;
+                    //     });
+
                 this.errors = [];
                 this.ifReady = false;
                 let formData = new FormData();

@@ -154,4 +154,21 @@ class ProjectsController extends Controller
             'message' => 'Resource successfully deleted'
         ], 200);
     }
+
+    /**
+     * Get all Projects without pagination.
+     *
+     * @param  \App\Project  $project
+     * @return \Illuminate\Http\Response
+     */
+    public function projectList()
+    {
+        if (! $data = ProjectResource::collection($this->project->all())) {
+            return response()->json([
+                'message'  => 'Failed to retrieve resource'
+            ], 400);
+        }
+
+        return $data;
+    }
 }

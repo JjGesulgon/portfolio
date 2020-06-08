@@ -60,5 +60,15 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * The Project has many projects_images
+     *
+     * @return array object
+     */
+    public function projectImages()
+    {
+        return $this->hasMany(ProjectImages::class);
+    }
 }
 

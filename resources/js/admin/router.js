@@ -31,6 +31,12 @@ const ProjectView = () => import('./views/Projects/View');
 const ProjectCreate = () => import('./views/Projects/Create');
 const ProjectUpdate = () => import('./views/Projects/Edit');
 
+//Project Images
+const ProjectImages = () => import('./views/ProjectImages/Index');
+// const ProjectView = () => import('./views/Projects/View');
+const ProjectImageCreate = () => import('./views/ProjectImages/Create');
+// const ProjectUpdate = () => import('./views/Projects/Edit');
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -58,11 +64,17 @@ const router = new VueRouter({
         { path: '/skills/create', name: 'skills.create', component: SkillCreate },
         //   { path: '/experience/:id/edit', name: 'experience.update', component: ExperienceUpdate },
 
-         // Project
+          // Project
         { path: '/projects', name: 'projects.index', component: Projects },
         { path: '/projects/:id/view', name: 'projects.view', component: ProjectView },
         { path: '/projects/create', name: 'projects.create', component: ProjectCreate },
         { path: '/projects/:id/edit', name: 'projects.update', component: ProjectUpdate },
+
+          // Project Images
+        { path: '/project-images', name: 'project-images.index', component: ProjectImages },
+        // { path: '/projects/:id/view', name: 'projects.view', component: ProjectView },
+        { path: '/project-images/create', name: 'project-images.create', component: ProjectImageCreate },
+        // { path: '/projects/:id/edit', name: 'projects.update', component: ProjectUpdate },
     ]
 });
 

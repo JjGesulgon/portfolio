@@ -2,62 +2,43 @@
     <div class="main_content">
         <div class="info">
             <div class="mr-auto mt-5 lettering">
-                Projects
+                Project Images
             </div>
             <div>
                 <div class="d-flex flex-row-reverse">
-                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewProjects">
+                    <label class="text-secondary clickableText header-margin" @click.prevent.default="viewProjectImages">
                         <i class="fas fa-long-arrow-alt-left"></i>&nbsp;
                         <strong>Back</strong>
                     </label>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <router-link to="/projects">Projects</router-link>&nbsp;>> Create Project
+                        <router-link to="/projects-images">Project Images</router-link>&nbsp;>> Create Project
                     </div>
                     <div class="card-body header-margin">
                         <div v-if="ifReady">
-                            <form v-on:submit.prevent="createNewProject">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
-                                </div>
+                            <form v-on:submit.prevent="createNewProjectImage">
                                 <div class="form-group">
                                     <label>Image (optional)</label>
                                     <input type="file" class="form-control-file" @change="onFileSelected">
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label>Image (optional)</label>
-                                    <input type="file" class="form-control-file" multiple @change="onFileSelected">
-                                </div> -->
                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <tinymce-component
-                                        v-model="description"
-                                        api-key="v8631ogi6aq7uc2h9z8tr72t2r3krmwlsbj5k4swk4i448f9"
-                                        :init="{
-                                            height: 500,
-                                            menubar: false,
-                                            plugins: [
-                                            'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
-                                            ],
-                                            menubar: 'file edit view insert format tools table help',
-                                            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
-                                            toolbar_sticky: true,
-                                        }"
-                                    />
+                                    <label>Caption</label>
+                                    <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Role</label>
-                                    <input id="role" type="text" class="form-control" v-model="role" autocomplete="off" minlength="2" maxlength="255" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Live Demo Link</label>
-                                    <input id="live_link" type="text" class="form-control" v-model="live_link" autocomplete="off" minlength="2" maxlength="255" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Github Link</label>
-                                    <input id="github_link" type="text" class="form-control" v-model="github_link" autocomplete="off" minlength="2" maxlength="255" required>
+                                    <label>Project</label>
+                                    <b-form-select v-model="selectedProject">
+                                        <template v-slot:first>
+                                            <b-form-select-option :value="null" disabled>-- Please select a project --</b-form-select-option>
+                                        </template>
+                                        <option v-for="{id, name} in this.options" 
+                                            :key="name"
+                                            :value="id"
+                                        >
+                                            {{ name }}
+                                        </option>
+                                    </b-form-select>
                                 </div>
                                 <div v-if="errors != []">
                                     <div class="alert alert-danger" v-for="error in errors" v-bind:key="error">
@@ -65,7 +46,7 @@
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-secondary btn-sm">Add Project</button>
+                                <button type="submit" class="btn btn-secondary btn-sm">Add Project Image</button>
                             </form>
                         </div>
 
@@ -86,63 +67,48 @@
             return {
                 ifReady: true,
                 name: '',
-                description: '',
-                role: '',
-                live_link: '',
-                github_link: '',
-                errors: [],
                 image: '',
-                images:[],
+                selectedProject: null,
+                options: [],
                 formData2: new FormData(),
+                errors: [],
             };
+        },
+
+        mounted() {
+            let promise = new Promise((resolve, reject) => {
+                axios.get('/api/list-projects').then(res => {
+                    console.log(res.data.data);
+                    this.options = res.data.data;
+                    // this.hasAbout = true
+                    // this.ifReady = true
+                    resolve();
+                }).catch(error => {
+                    this.ifReady = true
+                });
+            });
         },
 
         methods: {
             onFileSelected(event) {
-                // console.log(event);
                 this.image = event.target.files[0];
-
-                // let selectedFiles = event.target.files;
-
-                // if (!selectedFiles.length){
-                //     return false;
-                // }
-
-                // for(let i=0; i<selectedFiles.length; i++){
-                //     var encodedData = window.btoa(selectedFiles[i]);
-                //     this.images.push(encodedData);
-                // }
-                // console.log(this.images)
-                // //this.image = event.target.files;
-
-                // if (this.images.length > 1) {
-                //     for (let file in this.images) {
-                //         console.log(this.images[file]);
-                //         this.formData2.append('image[]', this.images[file]);
-                //     }
-                // } else {
-                //     this.formData2.append('image[]', this.images[0]);
-                // }
             },
 
-            createNewProject() {
+            createNewProjectImage() {
 
                 this.ifReady = false;
                 this.errors = [];
 
                 let formData = new FormData();
-                formData.append('name', this.name);
-                formData.append('description', this.description);
-                formData.append('role', this.role);
-                formData.append('live_link', this.live_link);
-                formData.append('github_link', this.github_link);
+                formData.append('caption', this.name);
+                formData.append('project_id', this.selectedProject);
 
                 if (this.image != null) {
                     formData.append('image', this.image);
                 }
 
                 // axios.post('/api/projects', this.$data).then(res => {
-                axios.post('/api/projects', formData).then(res => {
+                axios.post('/api/projectImages', formData).then(res => {
                     this.toast('Success','Project added', 'Successfully submitted the request', 'secondary')
                     this.$router.push({ name: 'projects.index' });
                 }).catch(err => {
@@ -192,7 +158,7 @@
                 })
             },
 
-            viewProjects() {
+            viewProjectImages() {
                 this.$router.push({
                     name: 'projects.index'
                 });

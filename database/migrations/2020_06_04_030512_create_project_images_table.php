@@ -20,6 +20,7 @@ class CreateProjectImagesTable extends Migration
             $table->bigInteger('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects');
             $table->string('image')->nullable();
+            $table->string('caption')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

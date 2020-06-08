@@ -35,7 +35,7 @@ class ProjectImagesController extends Controller
      */
     public function index()
     {
-        if (! $data = ProjectImagesResource::collection($this->projectImages->paginateWithFilters(request(), request()->per_page, request()->order_by))) {
+        if (! $data = ProjectImagesResource::collection($this->projectImages->paginateWithProjects(request(), request()->per_page, request()->order_by))) {
             return response()->json([
                 'message'  => 'Failed to retrieve resource'
             ], 400);

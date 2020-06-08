@@ -24,7 +24,7 @@ class ProjectImages extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'project_id', 'image'
+        'user_id', 'project_id', 'image', 'caption'
     ];
 
      /**
@@ -59,6 +59,16 @@ class ProjectImages extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The projects images belongs to a project.
+     *
+     * @return object
+     */
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
     }
 }
 

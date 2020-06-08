@@ -16,7 +16,7 @@
                 <b-row class="tech-stack-content">
                     <b-col sm>
                         <p class="tech-stack-content-paragraph">Javascript Front-End and PHP Back-End architecture is my daily business.
-                        I follow a “Use whatever is the most efficient” mindset. So where reasonable, I like to utilize a Laravel + Vue Stack but I'm not scared to touch new or different technologies if the project demands it.
+                        I follow a “Use whatever is the most efficient” mindset. So where reasonable, I prefer to utilize a Laravel + Vue Stack but I'm not scared to touch new or different technologies if the project demands it.
                         I'm used to work with large-scaled applications and its requirements.
                         </p>
                     </b-col>
