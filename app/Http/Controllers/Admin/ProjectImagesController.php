@@ -98,9 +98,8 @@ class ProjectImagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // return $request->all();
         $validator = Validator::make($request->all(), [
-            'project_id'              => 'required',
+            // 'name'              => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -129,7 +128,7 @@ class ProjectImagesController extends Controller
      */
     public function show($id)
     {
-        if (! $projectImages = $this->projectImages->findOrFail($id)) {
+        if (! $projectImages = $this->projectImages->getAllWithoutPagination()->findOrFail($id)) {
             return response()->json([
                 'message' => 'Resource does not exist'
             ], 400);
@@ -138,7 +137,7 @@ class ProjectImagesController extends Controller
         return response()->json([
             'response' => true,
             'message'  => 'Resource successfully retrieve',
-            'project'    => $projectImages
+            'project_images'    => $projectImages
         ], 200);
     }
 

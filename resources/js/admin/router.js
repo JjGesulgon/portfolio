@@ -33,9 +33,8 @@ const ProjectUpdate = () => import('./views/Projects/Edit');
 
 //Project Images
 const ProjectImages = () => import('./views/ProjectImages/Index');
-// const ProjectView = () => import('./views/Projects/View');
 const ProjectImageCreate = () => import('./views/ProjectImages/Create');
-// const ProjectUpdate = () => import('./views/Projects/Edit');
+const ProjectImageUpdate = () => import('./views/ProjectImages/Edit');
 
 const router = new VueRouter({
     mode: 'history',
@@ -72,9 +71,8 @@ const router = new VueRouter({
 
           // Project Images
         { path: '/project-images', name: 'project-images.index', component: ProjectImages },
-        // { path: '/projects/:id/view', name: 'projects.view', component: ProjectView },
         { path: '/project-images/create', name: 'project-images.create', component: ProjectImageCreate },
-        // { path: '/projects/:id/edit', name: 'projects.update', component: ProjectUpdate },
+        { path: '/project-images/:id/edit', name: 'project-images.update', component: ProjectImageUpdate },
     ]
 });
 

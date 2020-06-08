@@ -55,4 +55,16 @@ class ProjectImagesRepository extends Repository
                         $this->model->createPaginationUrl($request, $removePage)
                     );
     }
+
+    public function getAllWithoutPagination()
+    {
+        return $this->projectImages->select('id', 
+                                            'caption', 
+                                            'image',
+                                            'project_id')
+                                    ->with(['project' => function($query){
+                                    $query->select('id', 'image', 'name', 'description', 'role', 'live_link', 'github_link', 'created_at', 'deleted_at', 'updated_at', 'user_id' );
+                                    }]);
+    } 
+
 }

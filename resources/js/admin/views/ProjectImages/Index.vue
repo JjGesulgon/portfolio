@@ -37,20 +37,21 @@
                             </caption>
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Caption</th>
+                                    <th scope="col">Project</th>
                                     <th scope="col">Options</th>
                                 </tr>
                             </thead>
                             <tbody v-if="projects">
-                                <tr v-for="{ id, name } in projects">
-                                    <td>{{ name }}</td>
+                                <tr v-for="{ id, image, caption, project  } in projects">
                                     <td>
-                                        <router-link class="text-secondary" :to="{ name: 'projects.view', params: { id: id }}">
-                                            <i class="fas fa-eye"></i>&nbsp;
-                                            <strong>View</strong>
-                                        </router-link>
-                                        &nbsp; | &nbsp;
-                                        <router-link class="text-secondary" :to="{ name: 'projects.update', params: { id: id }}">
+                                        <img style="height:10em;" :src="'storage/images/' + image" alt=""> 
+                                    </td>
+                                    <td>{{ caption }}</td>
+                                    <td>{{ project.name }}</td>
+                                    <td>
+                                        <router-link class="text-secondary" :to="{ name: 'project-images.update', params: { id: id }}">
                                             <i class="fas fa-edit"></i>&nbsp;
                                             <strong>Edit</strong>
                                         </router-link>
@@ -152,7 +153,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Search Skill</h5>
+                                    <h5 class="modal-title">Search Project Image</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

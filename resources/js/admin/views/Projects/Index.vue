@@ -8,6 +8,11 @@
                 <div class="card">
                     <div class="card-header clearfix">
                         <div class="d-flex flex-row-reverse header-margin">
+                            <router-link class="text-secondary clickableText header-margin" :to="{ name: 'project-images.index'}">
+                                <i class="fas fa-eye"></i>&nbsp;
+                                <strong>View Project Images</strong>
+                            </router-link>
+                            &nbsp; | &nbsp;
                             <label class="text-secondary clickableText header-margin" @click.prevent.default="createProject">
                                 <i class="fas fa-plus-square"></i>&nbsp;
                                 <strong>Add Project</strong>
@@ -152,7 +157,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Search Skill</h5>
+                                    <h5 class="modal-title">Search Project</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

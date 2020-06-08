@@ -13,18 +13,18 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <router-link to="/projects-images">Project Images</router-link>&nbsp;>> Create Project
+                        <router-link to="/project-images">Project Images</router-link>&nbsp;>> Edit Project
                     </div>
-                    <div class="card-body header-margin">
+                    <div class="card-body">
                         <div v-if="ifReady">
-                            <form v-on:submit.prevent="createNewProjectImage">
+                            <form v-on:submit.prevent="updateProjectImages" method="POST">
+                                <div class="form-group">
+                                    <label><strong>Name</strong></label>
+                                    <input type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255">
+                                </div>
                                 <div class="form-group">
                                     <label>Image (optional)</label>
                                     <input type="file" class="form-control-file" @change="onFileSelected">
-                                </div>
-                                <div class="form-group">
-                                    <label>Caption</label>
-                                    <input id="name" type="text" class="form-control" v-model="name" autocomplete="off" minlength="2" maxlength="255" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Project</label>
@@ -41,15 +41,14 @@
                                     </b-form-select>
                                 </div>
                                 <div v-if="errors != []">
-                                    <div class="alert alert-danger" v-for="error in errors" v-bind:key="error">
+                                    <div class="alert alert-danger" v-for="error in errors">
                                         <a href="#" class="close" data-dismiss="alert">&times;</a>
                                         <strong>Error!</strong> {{ error[0] }}
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-secondary btn-sm">Add Project Image</button>
+                                <button type="button" class="btn btn-secondary btn-sm" @click.prevent.default="updateProjectImages">Update Project</button>
                             </form>
                         </div>
-
                         <div v-else>
                             <div class="d-flex justify-content-center mb-3">
                                 <b-spinner label="Loading..."></b-spinner>
@@ -68,20 +67,31 @@
                 ifReady: true,
                 name: '',
                 image: '',
+                projID: '',
+                projSelected: null,
                 selectedProject: null,
                 options: [],
-                formData2: new FormData(),
                 errors: [],
             };
         },
 
         mounted() {
             let promise = new Promise((resolve, reject) => {
+                axios.get('/api/projectImages/' + this.$route.params.id).then(res => {
+                    this.id    = res.data.project_images.id;
+                    this.name  = res.data.project_images.caption;
+                    this.selectedProject  = res.data.project_images.project_id;
+                    resolve();
+                });
+            });
+
+            promise.then(() => {
+                this.ifReady = true;
+            });
+
+            let promise2 = new Promise((resolve, reject) => {
                 axios.get('/api/list-projects').then(res => {
-                    console.log(res.data.data);
                     this.options = res.data.data;
-                    // this.hasAbout = true
-                    // this.ifReady = true
                     resolve();
                 }).catch(error => {
                     this.ifReady = true
@@ -94,12 +104,17 @@
                 this.image = event.target.files[0];
             },
 
-            createNewProjectImage() {
+            viewProjectImages() {
+                this.$router.push({
+                    name: 'project-images.index'
+                });
+            },
 
-                this.ifReady = false;
+            updateProjectImages() {
                 this.errors = [];
-
+                this.ifReady = false;
                 let formData = new FormData();
+                formData.append('_method','PATCH');
                 formData.append('caption', this.name);
                 formData.append('project_id', this.selectedProject);
 
@@ -107,9 +122,12 @@
                     formData.append('image', this.image);
                 }
 
-                // axios.post('/api/projects', this.$data).then(res => {
-                axios.post('/api/projectImages', formData).then(res => {
-                    this.toast('Success','Project added', 'Successfully submitted the request', 'secondary')
+                axios.post('/api/projectImages/' + this.$route.params.id, formData,  {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(res => {
+                    this.toast('Success','Project Image edited', 'Successfully submitted the request', 'secondary')
                     this.$router.push({ name: 'project-images.index' });
                 }).catch(err => {
                     this.errors = err.response.data.errors
@@ -156,12 +174,6 @@
                     toaster: 'b-toaster-bottom-right',
                     variant: variant
                 })
-            },
-
-            viewProjectImages() {
-                this.$router.push({
-                    name: 'projects.index'
-                });
             },
         }
     }
