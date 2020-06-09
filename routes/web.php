@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['namespace' => 'Admin', 'domain' => 'admin.portfolio.test'], function(){
+Route::group(['namespace' => 'Admin', 'domain' => 'admin.jjgesulgon.dev'], function(){
        
         // Authentication
         // Route::get('/auth/get-admin', 'AuthController@admin');
@@ -46,6 +46,6 @@ Route::group(['namespace' => 'Admin', 'domain' => 'admin.portfolio.test'], funct
         });
 });
 
-Route::group(['namespace' => 'Main', 'domain' => 'portfolio.test'], function(){
+Route::group(['namespace' => 'Main', 'domain' => 'jjgesulgon.dev'], function(){
         Route::get('/{any}', 'SpaController@index')->where('any', '.*')->name('main.index');
 });
