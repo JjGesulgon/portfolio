@@ -1,7 +1,12 @@
 {
     "/js/main.js": "/js/main.js",
+    "/js/main.js.map": "/js/main.js.map",
     "/js/admin.js": "/js/admin.js",
     "/css/app.css": "/css/app.css",
+    "/js/admin.js.map": "/js/admin.js.map",
+    "/css/app.css.map": "/css/app.css.map",
     "/js/vendor.js": "/js/vendor.js",
-    "/js/manifest.js": "/js/manifest.js"
+    "/js/vendor.js.map": "/js/vendor.js.map",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/manifest.js.map": "/js/manifest.js.map"
 }
