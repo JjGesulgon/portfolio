@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.portfolio.test')], function () {
+Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.jjgesulgon.dev')], function () {
 
     // Authentication
     Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Admin', 'domain' => env('ADMIN_HOST_URL','admin.po
     ]);
 });
 
-Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','portfolio.test')], function () {
+Route::group(['namespace' => 'Main', 'domain' => env('MAIN_HOST_URL','jjgesulgon.dev')], function () {
 
     Route::resources([
         'about'           => 'AboutController',
