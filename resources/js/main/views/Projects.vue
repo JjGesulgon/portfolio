@@ -17,7 +17,7 @@
                 <b-row>
                     <b-col sm>
                         <!-- <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="overlay"></b-img> -->
-                        <div class="container-image" v-b-modal.modal-center @click="viewProjectImage(project.image, project.name)">
+                        <div class="container-image" v-b-modal.modal-center @click="viewProjectImage(project.project_images, project.name)">
                             <!-- <img src="img_avatar.png" alt="Avatar" class="image" style="width:100%"> -->
                             <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="image"></b-img>
                             <div class="middle">
@@ -85,8 +85,9 @@
                 <!-- Text slides with image -->
                 <!-- text="Nulla vitae elit libero, a pharetra augue mollis interdum." -->
                 <b-carousel-slide
-                    :caption="this.caption"
-                    :img-src="`/storage/images/${this.selectedImage}`"
+                    v-for="projectImage in this.selectedImage" v-bind:key="projectImage.caption"
+                    :caption="projectImage.caption"
+                    :img-src="`/storage/images/${projectImage.image}`"
                 ></b-carousel-slide>
             </b-carousel>
             <template v-slot:modal-footer>

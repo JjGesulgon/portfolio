@@ -62,14 +62,17 @@
 
     .first-text-label{
         color: #6c359b !important;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .second-text-label{
         color: #636064 !important;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .third-text-label{
         color: #636064 !important;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .contact-email-header{
@@ -77,12 +80,14 @@
         padding-bottom: 0.5em !important;
         color: #636064 !important;
         font-size: 12px !important;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .contact-email{
         /* color: #101010 !important; */
         color: #636064 !important;
-        font-weight: bold;
+        font-weight: 500;
+        font-family: 'Raleway', sans-serif !important;
     }
 
     .email-textbox{

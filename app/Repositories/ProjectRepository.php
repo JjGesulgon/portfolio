@@ -25,4 +25,18 @@ class ProjectRepository extends Repository
     {
         return $this->model->all();
     }
+
+    /**
+     * Get the project with project images
+     *
+     * @return array json object
+     */
+    public function getAllProjectImages()
+    {
+        return $this->project->select('id', 'image', 'name', 'description', 'role', 'live_link', 'github_link', 'created_at', 'deleted_at', 'updated_at', 'user_id' )
+                                ->with(['projectImages' => function($query){
+                                    $query->select('id', 'caption', 'image', 'project_id');
+                                }])
+                                ->get();
+    } 
 }

@@ -35,7 +35,15 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        if (! $data = ProjectResource::collection($this->project->all())) {
+        // if (! $data = ProjectResource::collection($this->project->getAllProjectImages())) {
+        //     return response()->json([
+        //         'message'  => 'Failed to retrieve resource'
+        //     ], 400);
+        // }
+
+        // return $data;
+
+        if (! $data = ProjectResource::collection($this->project->getAllProjectImages())) {
             return response()->json([
                 'message'  => 'Failed to retrieve resource'
             ], 400);
