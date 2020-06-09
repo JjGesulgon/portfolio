@@ -31,7 +31,8 @@
 
 .text-item-color{
     color: #ffffff !important;
-    opacity: 70%;
+    opacity: 69%;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 .navbar-background{
