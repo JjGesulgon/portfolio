@@ -30,8 +30,8 @@
 
 
 .text-item-color{
-    color: #ffffff !important;
-    opacity: 70%;
+    color: #bebebe !important;
+    /* opacity: 70%; */
     font-family: 'Raleway', sans-serif !important;
 }
 
@@ -49,7 +49,8 @@
 .navi-link {
   display: block;
   /* color: #007bff; */
-  color: #ffffff !important;
+  /* color: #ffffff !important; */
+   color: #bebebe !important;
 }
 
 /* enable absolute positioning */
