@@ -31,7 +31,7 @@
 
 .text-item-color{
     color: #ffffff !important;
-    opacity: 69%;
+    opacity: 70%;
     font-family: 'Raleway', sans-serif !important;
 }
 
