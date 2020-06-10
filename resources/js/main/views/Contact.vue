@@ -18,7 +18,7 @@
                     <div class="contact-email-header">
                         Feel like talking?
                     </div>
-                    <div class="contact-email">
+                    <div class="contact-email mb-5">
                         +63 925 869 6132
                     </div>
                 </b-col>
@@ -39,7 +39,7 @@
                                 required
                             ></b-form-textarea>
                         </div>
-                        <div class="mail-button">
+                        <div class="mail-button mb-5">
                             <b-button type="submit" variant="outline-secondary">Send</b-button>
                         </div>
                     </form>
