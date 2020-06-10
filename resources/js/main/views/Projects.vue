@@ -15,17 +15,18 @@
             </div> -->
             <b-container class="bv-example-row mb-5">
                 <b-row>
-                    <b-col sm class="image-con">
+                    <b-col sm v-if="project.project_images.length > 0">
                         <!-- <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="overlay"></b-img> -->
-                        <div class="container-image" v-b-modal.modal-center v-if="project.project_images.length > 0" @click="viewProjectImage(project.project_images, project.name)">
+                        <div class="container-image" v-b-modal.modal-center @click="viewProjectImage(project.project_images, project.name)">
                             <!-- <img src="img_avatar.png" alt="Avatar" class="image" style="width:100%"> -->
                             <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="image"></b-img>
                             <div class="middle">
                                 <div class="text">Click to view</div>
                             </div>
                         </div>
-
-                        <div class="container-image2 text-center project-image-unavailable " v-b-modal.modal-center v-else>
+                    </b-col>
+                    <b-col sm class="image-con" v-else>
+                        <div class="container-image2 text-center project-image-unavailable " v-b-modal.modal-center>
                             Image Unavailable
                         </div>
                     </b-col>
