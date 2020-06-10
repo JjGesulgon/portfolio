@@ -28,7 +28,8 @@
     }
 
     .contact-button{
-        opacity: 70%;
+        /* opacity: 70%; */
+        background-color: #bebebe !important;
         font-family: 'Raleway', sans-serif !important;
     }
 
@@ -80,12 +81,12 @@
         /* margin-left: 8em; */
         /* font-size:1vw; */
         font-size:20px;
-        color: rgb(255, 255, 255);
+        color: #bebebe !important;
         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: 'Raleway', sans-serif !important;
         font-weight: lighter;
         font-style: oblique;
-        opacity: 70%;
+        /* opacity: 70%; */
     }
 
     .main_content{
