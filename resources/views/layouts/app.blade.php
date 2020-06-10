@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ URL::asset('/assets/favicon.ico') }}" type="image/x-icon"/>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>JJ Gesulgon</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,7 +26,7 @@
     <meta property="og:image" content="{{ URL::asset('/assets/meta_image.jpg') }}" />
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
-    <meta property="og:url" content="https://www.jjgesulgon.dev/" />
+    <meta property="og:url" content="https://www.jjgesulgon.dev" />
     <meta property="og:site_name" content="Jj Gesulgon Website" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
