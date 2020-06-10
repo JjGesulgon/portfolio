@@ -48,7 +48,7 @@
                             <b-row class="mb-2">
                                 <b-col cols="4" class="project-property-label">Repository Link:</b-col>
                                 <b-col cols="8" class="project-content" v-if="project.github_link != 'n/a'">
-                                    <a :href="project.github_link" class="project-content">{{ project.github_link}}</a>
+                                    <a :href="project.github_link" class="project-content">Click Here</a>
                                 </b-col>
                                 <b-col cols="8" class="project-content" v-else>
                                     Unavailable due to company policy.
@@ -57,7 +57,7 @@
                             <b-row class="mb-2">
                                 <b-col cols="4" class="project-property-label">Live Link:</b-col>
                                 <b-col cols="8" class="project-content" v-if="project.live_link != 'n/a'">
-                                    <a :href="project.live_link" class="project-content">{{ project.live_link}}</a>
+                                    <a :href="project.live_link" class="project-content">Click Here</a>
                                 </b-col>
                                 <b-col cols="8" class="project-content" v-else>
                                     Under Development
