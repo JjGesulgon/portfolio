@@ -26,7 +26,7 @@
                         </div>
                     </b-col>
                     <b-col sm class="image-con" v-else>
-                        <div class="container-image2 text-center project-image-unavailable " v-b-modal.modal-center>
+                        <div class="container-image2 text-center project-image-unavailable ">
                             Image Unavailable
                         </div>
                     </b-col>
