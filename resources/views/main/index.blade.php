@@ -38,6 +38,18 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta property="og:title" content="Jj Gesulgon" />
+    <meta property="og:description" content="Fullstack Web Developer and Software Engineer" />
+    <meta property="og:image" content="https://www.jjgesulgon.dev/assets/meta_image.jpg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:url" content="https://www.jjgesulgon.dev/" />
+    <meta property="og:site_name" content="Jj Gesulgon Website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:author" content="Jj Gesulgon" />
 </head>
 <body>
     <div id="app">
