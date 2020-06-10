@@ -6,8 +6,8 @@
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="Jj Gesulgon Personal Website" />
     <meta property="og:description" content="Fullstack Web Developer and Software Engineer" />
-    {{-- <meta property="og:image" content="{{ URL::asset('/assets/meta_image.jpg') }}" /> --}}
-    <meta property="og:image" content="https://www.jjgesulgon.dev/assets/meta_image.jpg" />
+    <meta property="og:image" content="{{ URL::asset('/assets/meta_image.jpg') }}" />
+    {{-- <meta property="og:image" content="https://www.jjgesulgon.dev/assets/meta_image.jpg" /> --}}
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
     <meta property="og:url" content="https://www.jjgesulgon.dev" />
