@@ -27,8 +27,9 @@
     }
 
     .text-item-color{
-        color: #ffffff !important;
-        opacity: 70%;
+        /* color: #ffffff !important; */
+        color: #bebebe !important;
+        /* opacity: 70%; */
     }
 
     .navbar-background{
@@ -45,7 +46,8 @@
     .navi-link {
     display: block;
     /* color: #007bff; */
-    color: #ffffff !important;
+    /* color: #ffffff !important; */
+    color: #bebebe !important;
     }
 
     /* enable absolute positioning */
