@@ -29,7 +29,7 @@
 
     .contact-button{
         /* opacity: 70%; */
-        background-color: #bebebe !important;
+        color: #b1b1b1 !important;
         font-family: 'Raleway', sans-serif !important;
     }
 
