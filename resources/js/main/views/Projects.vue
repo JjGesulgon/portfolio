@@ -15,14 +15,18 @@
             </div> -->
             <b-container class="bv-example-row mb-5">
                 <b-row>
-                    <b-col sm>
+                    <b-col sm class="image-con">
                         <!-- <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="overlay"></b-img> -->
-                        <div class="container-image" v-b-modal.modal-center @click="viewProjectImage(project.project_images, project.name)">
+                        <div class="container-image" v-b-modal.modal-center v-if="project.project_images.length != 0" @click="viewProjectImage(project.project_images, project.name)">
                             <!-- <img src="img_avatar.png" alt="Avatar" class="image" style="width:100%"> -->
                             <b-img :src="`/storage/images/${project.image}`" fluid alt="Responsive image" class="image"></b-img>
                             <div class="middle">
                                 <div class="text">Click to view</div>
                             </div>
+                        </div>
+
+                        <div class="container-image2 text-center project-image-unavailable " v-b-modal.modal-center v-else>
+                            Image Unavailable
                         </div>
                     </b-col>
                     <b-col sm>
@@ -138,6 +142,16 @@
         text-align: right;
         font-family: 'Raleway', sans-serif !important;
     }
+    .image-con{
+        background-color: #d6d6d6;
+    }
+
+    .project-image-unavailable{
+        font-family: 'Raleway', sans-serif !important;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        color: #101010;
+    }
 
     .project-content{
         font-family: 'Raleway', sans-serif !important;
@@ -174,6 +188,11 @@ div >>> p {
   }
 
 .container-image {
+  position: relative;
+  /* width: 50%; */
+}
+
+.container-image2 {
   position: relative;
   /* width: 50%; */
 }
