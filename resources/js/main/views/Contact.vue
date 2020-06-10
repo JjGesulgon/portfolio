@@ -4,7 +4,7 @@
             <h2 class="first-text-label"> Don't be a stranger</h2>
             <h3 class="second-text-label"> just say hello.</h3>
             <b-row class="mt-5">
-                <b-col sm>
+                <b-col sm mb-5>
                     <div class="third-text-label">
                         Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.
                     </div>
@@ -22,7 +22,7 @@
                         +63 925 869 6132
                     </div>
                 </b-col>
-                <b-col sm>
+                <b-col sm mb-5>
                     <form v-on:submit.prevent="SendEmail" v-if="ifReady">
                         <div>
                             <b-form-input v-model="name" placeholder="Name" required></b-form-input>
