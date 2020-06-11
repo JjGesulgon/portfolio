@@ -26,7 +26,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta property="og:title" content="Jj Gesulgon Personal Website" />
+    <meta property="og:title" content="Jj Gesulgon" />
     <meta property="og:description" content="Fullstack Web Developer and Software Engineer" />
     <meta property="og:image" content="{{ URL::asset('/assets/meta_image.jpg') }}" />
     {{-- <meta property="og:image" content="https://www.jjgesulgon.dev/assets/meta_image.jpg" /> --}}
