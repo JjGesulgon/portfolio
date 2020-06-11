@@ -125,7 +125,7 @@ export default {
                 this.name = '';
                 this.email = '';
                 this.message = '';
-                // this.toast('Success','Project added', 'Email Sent', 'secondary')
+                this.toast('Success','Project added', 'Email Sent', 'secondary')
             }).catch(err => {
                 this.errors = err.response.data.errors
                 this.ifReady = true;
