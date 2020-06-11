@@ -54,7 +54,7 @@
         padding-top: 2em !important;
         font-family: 'Raleway', sans-serif !important;
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 1624px) {
          .history-box-container{
             padding-left: 3em !important;
             padding-right: 3em !important;
