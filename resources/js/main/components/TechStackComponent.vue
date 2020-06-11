@@ -114,7 +114,7 @@
             text-align: right !important;
         }
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 1624px) {
         .tech-icon{
             margin: 0 auto;
             display: none !important;
