@@ -69,7 +69,7 @@
                     </b-col>
                     <b-col sm>
                         <p class="tech-stack-content-paragraph2">I like to work agile and in cross-functional teams and got experience from previous projects.
-                            To collaborate with UI / UX and Back-End colleagues to create fast and accessible results across the stack is my usual workflow.
+                            Collaborating with UI / UX and Back-End team members to create quick and accurate results is my usual workflow.
                             I also enjoy technical discussions and brainstorming to improve the overall project workflow.
                         </p>
                     </b-col>
