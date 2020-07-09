@@ -60,6 +60,13 @@
             padding-right: 3em !important;
         }
     }
+
+    @media (min-width: 3700px){
+        .history-box-container{
+            padding-left: 30% !important;
+            padding-right: 30% !important;
+        }
+    }
 </style>
 <script>
     export default {

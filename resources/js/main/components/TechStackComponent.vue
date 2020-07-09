@@ -114,6 +114,31 @@
             text-align: right !important;
         }
     }
+    @media (min-width: 3700px){
+        
+        .tech-stack-content-paragraph{
+            text-align: left;
+            margin-left: 50% !important;
+        }
+        
+        .tech-stack-content-paragraph2{
+            color: #101010;
+            text-align: left;
+            margin-right: 50% !important;
+        }
+
+        .tech-skill-content{
+            margin-top: 3em !important;
+            margin-right: 50% !important;
+            margin-bottom: 1em !important;
+        }
+
+        .tech-skill-content2{
+            margin-top: -2em !important;
+            margin-left: 50% !important;
+            margin-bottom: 3em;
+        }
+    }
     @media (max-width: 1624px) {
         .tech-icon{
             margin: 0 auto;
