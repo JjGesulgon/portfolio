@@ -4,13 +4,12 @@
 * [Setup](#setup)
 
 ## General info
-This is a custom-made CMS of jjgesulgon.dev
+This is a custom-made website with CMS capabilities. This project can handle 2 domains. One for the Main Website, the other is for its CMS. 
 	
 ## Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* Laravel 6
+* Vue.js
 	
 ## Setup
 To run this project, follow the steps below:
